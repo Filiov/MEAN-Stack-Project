@@ -1,0 +1,30 @@
+{
+  "name": "memento",
+  "version": "1.0.0",
+  "description": "MEAN Stack with Angular 5",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Filiov/MEAN-Stack-Project.git"
+  },
+  "keywords": [
+    "MEAN",
+    "Stack",
+    "Angular",
+    "5",
+    "Application"
+  ],
+  "author": "Stoil Filiov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Filiov/MEAN-Stack-Project/issues"
+  },
+  "homepage": "https://github.com/Filiov/MEAN-Stack-Project#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "mongoose": "^5.0.7"
+  }
+}
