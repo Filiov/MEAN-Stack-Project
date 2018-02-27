@@ -1,0 +1,53 @@
+<div class="ui top aligned center aligned grid">
+    <div class="column">
+        <h2 class="ui image header">
+            <img src="assets/reg.png" class="image">
+            <div class="content">
+                Create a New Account
+            </div>
+        </h2>
+        <form class="ui large form">
+            <div class="ui stacked segment">
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="user icon"></i>
+                        <input name="name" type="text" placeholder="Full Name">
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="at icon"></i>
+                        <input name="email" type="email" placeholder="E-mail address">
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="lock icon"></i>
+                        <input name="password" type="password" placeholder="Password">
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class=""></i>
+                        <textarea name="description" type="text" placeholder="Tell us about yourself..."></textarea>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="font" for="filebutton">Upload profile picture</label>
+                    <div class="controls">
+                        <input name="img" type="file" id="filePicker" (change)="handleFileSelect($event)">
+                    </div>
+                </div>
+                <button (click)="post()" class="ui fluid large color submit button" name="submit">Register</button>
+            </div>
+
+            <div class="ui error message"></div>
+
+        </form>
+
+        <div class="ui message">
+            Already a Member?
+            <a [routerLink]="['/login']">Sign In</a>
+        </div>
+    </div>
+</div>
