@@ -1,0 +1,93 @@
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.3/css/mdb.min.css);
+@import url(https://fonts.googleapis.com/css?family=Galada);
+
+
+.hm-gradient {
+    background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+}
+.darken-grey-text {
+    color: #2E2E2E;
+}
+
+.navbar .dropdown-menu a:hover {
+    color: #616161 !important;
+}
+.darken-grey-text {
+    color: #2E2E2E;
+}
+
+.color {
+    /* min-height: 80px; */
+    background: linear-gradient(to right, #8c6ba7 , #4088b1);
+}
+
+.nav-link {
+    border-radius: 100%;
+}
+
+.font {
+    font-family: 'Galada';
+    font-size: 45px;
+}
+
+.welcome {
+    color: #00ff6a;
+}
+
+input {
+    outline: none;
+  }
+  input[type=search] {
+    -webkit-appearance: textfield;
+    /* -webkit-box-sizing: content-box; */
+    font-family: inherit;
+    font-size: 100%;
+  }
+  input::-webkit-search-decoration,
+  
+  input[type=search] {
+    background: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+    border: solid 1px #ccc;
+    padding: 7px 9px 7px 17px;
+    width: 55px;
+  
+    border-radius: 1em;
+  
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    transition: all .5s;
+  }
+  /* input[type=search]:focus {
+    width: 170px;
+    background-color: #fff;
+  
+    -webkit-box-shadow: 0 0 5px #6dcff680;
+    -moz-box-shadow: 0 0 5px #6dcff680;
+    box-shadow: 0 0 5px #6dcff680;
+  } */
+  
+  #search input[type=search] {
+    width: 10px;
+    padding-left: 0px;
+    color: transparent;
+    cursor: pointer;
+  }
+  #search input[type=search]:hover {
+    background-color: #fff;
+  }
+  #search input[type=search]:focus {
+    width: 200px;
+    padding-left: 32px;
+    color: #000;
+    background-color: #fff;
+    cursor: auto;
+    color: black;
+  }
+  #search input:-moz-placeholder {
+    color: transparent;
+  }
+  #search input::-webkit-input-placeholder {
+    color: transparent;
+  }
+

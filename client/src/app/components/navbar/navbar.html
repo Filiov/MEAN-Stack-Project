@@ -1,0 +1,47 @@
+<nav class="mb-4 navbar navbar-expand-lg navbar-dark color">
+    <a class="navbar-brand" routerLink="/home">
+        <img class="img-responsive logo" src="../assets/camera.png" alt="">
+        <span class="font">memento</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/home">
+                    <i class="fa fa-home"></i> Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/uploadmem">
+                    <i class="fa fa-camera"></i> Memento</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/search">
+                    <i class="fa fa-search"></i> Search</a>
+                <!-- <div class="container collapse search-input">
+                    <form class="row" id="search" (ngSubmit)="search(searchTerm)" style="margin-left: 10px">
+                        <input [(ngModel)]="searchTerm" name="searchTerm" class="col-lg-12" type="search" placeholder="Search..">
+                    </form>
+                </div>  data-toggle="collapse" data-target=".search-input"-->
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/register">
+                    <i class="fa fa-user"></i> Register </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/login">
+                    <i class="fa fa-lock"></i> Log In </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" (click)="authService.logout()">
+                    <i class="fa fa-sign-out"></i> Log Out </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/register">
+                    <i class="fa fa-user"></i> Profile </a>
+            </li>
+        </ul>
+    </div>
+</nav>
