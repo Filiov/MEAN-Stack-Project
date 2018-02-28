@@ -50,10 +50,10 @@ let usernameLengthChecker = (username) => {
     if (!username) {
       return false;
     } else {
-      const regExp = new RegExp(/^[a-zA-Z0-9]+$/);
+      
       return regExp.test(username);
     }
-  };
+  };const regExp = new RegExp(/^[a-zA-Z0-9]+$/);
 
   const usernameValidators = [
     {

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
@@ -9,6 +9,7 @@ import { Navbar } from './components/navbar/navbar';
 import { Home } from './components/home/home';
 import { Search } from './components/search/search';
 import { Register } from './components/register/register';
+import { AuthService } from './services/auth.service';
 
 
 @NgModule({
@@ -21,11 +22,15 @@ import { Register } from './components/register/register';
   ],
   imports: [
     BrowserModule,
-    FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     RoutingModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    AuthService
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }
