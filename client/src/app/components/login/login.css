@@ -28,3 +28,7 @@
   .alert {
     padding: 0rem 0rem;
   }
+
+  li {
+    font-size: 14px;
+  }

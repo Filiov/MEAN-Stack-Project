@@ -5,13 +5,15 @@ import { Register } from './components/register/register';
 import { Login } from './components/login/login';
 import { Dashboard } from './components/dashboard/dashboard';
 import { Profile } from './components/profile/profile';
+import { AuthGuard } from './guards/auth.guard';
+import { NotAuthGuard } from './guards/notAuth.guard';
 
 const appRoutes: Routes = [
     { path: '', component: Home },
-    { path: 'dashboard', component: Dashboard },
-    { path: 'register', component: Register },
-    { path: 'login', component: Login },
-    { path: 'profile', component: Profile },
+    { path: 'dashboard', component: Dashboard, canActivate: [AuthGuard] },
+    { path: 'register', component: Register, canActivate: [NotAuthGuard] },
+    { path: 'login', component: Login, canActivate: [NotAuthGuard] },
+    { path: 'profile', component: Profile, canActivate: [AuthGuard] },
     { path: '**', component: Home }
 ];
 

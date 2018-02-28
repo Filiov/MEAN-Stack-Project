@@ -12,6 +12,8 @@ import { AuthService } from './services/auth.service';
 import { Login } from './components/login/login';
 import { Dashboard } from './components/dashboard/dashboard';
 import { Profile } from './components/profile/profile';
+import { AuthGuard } from './guards/auth.guard';
+import { NotAuthGuard } from './guards/notAuth.guard';
 
 
 @NgModule({
@@ -31,7 +33,9 @@ import { Profile } from './components/profile/profile';
     RoutingModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    AuthGuard,
+    NotAuthGuard
   ],
   bootstrap: [
     AppComponent
