@@ -1,13 +1,17 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { Home } from './components/home/home';
-import { Search } from './components/search/search';
 import { Register } from './components/register/register';
+import { Login } from './components/login/login';
+import { Dashboard } from './components/dashboard/dashboard';
+import { Profile } from './components/profile/profile';
 
 const appRoutes: Routes = [
     { path: '', component: Home },
-    { path: 'search', component: Search },
+    { path: 'dashboard', component: Dashboard },
     { path: 'register', component: Register },
+    { path: 'login', component: Login },
+    { path: 'profile', component: Profile },
     { path: '**', component: Home }
 ];
 

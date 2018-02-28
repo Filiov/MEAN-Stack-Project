@@ -7,9 +7,11 @@ import { AppComponent } from './app.component';
 import { RoutingModule } from './routing.module';
 import { Navbar } from './components/navbar/navbar';
 import { Home } from './components/home/home';
-import { Search } from './components/search/search';
 import { Register } from './components/register/register';
 import { AuthService } from './services/auth.service';
+import { Login } from './components/login/login';
+import { Dashboard } from './components/dashboard/dashboard';
+import { Profile } from './components/profile/profile';
 
 
 @NgModule({
@@ -17,8 +19,10 @@ import { AuthService } from './services/auth.service';
     AppComponent,
     Navbar,
     Home,
-    Search,
-    Register
+    Dashboard,
+    Register,
+    Login,
+    Profile
   ],
   imports: [
     BrowserModule,

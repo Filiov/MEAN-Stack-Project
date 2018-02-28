@@ -1,0 +1,30 @@
+@import url(https://fonts.googleapis.com/css?family=Galada);
+
+ .grid {
+    height: 100%;
+  }
+  .image {
+    margin-top: -100px;
+  }
+  .column {
+    max-width: 450px;
+  }
+
+  .color {
+      background-color: #61bdc5;
+      color: white;
+  }
+
+  .button:hover {
+      background-color: #61bdc580;
+  }
+
+  .content {
+    font-family: 'Galada';
+    font-size: 40px;
+      color: #61bdc5;
+  }
+
+  .alert {
+    padding: 0rem 0rem;
+  }
