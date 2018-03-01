@@ -1,0 +1,126 @@
+<h1 class="page-header">Memento Feed</h1>
+
+<div class="row show-hide-message" *ngIf="message && newPost">
+    <div [ngClass]="messageClass">
+        {{ message }}
+    </div>
+</div>
+
+<button type="button" name="button" class="btn btn-warning" *ngIf="!newPost" (click)="newMementoForm()">New Post</button>
+<button [disabled]="loadingPosts" type="button" name="button" class="btn btn-default" *ngIf="!newPost" (click)="reloadPosts()">
+    <i class="redo alternate icon"></i>&nbsp;&nbsp;Reload</button>
+
+<br />
+<br />
+
+<div class="ui top aligned center aligned grid" *ngIf="newPost">
+    <div class="column1">
+        <h2 class="ui image header">
+            <img src="assets/cam.png" class="image1">
+            <div class="content1">
+                Upload New Memento
+            </div>
+        </h2>
+        <form class="ui large form" [formGroup]="form" name="mementoForm" (submit)="onMementoSubmit()">
+            <div class="ui stacked segment">
+                <div class="field">
+                    <div [ngClass]="{'has-success': form.controls.title.valid, 'has-error': form.controls.title.dirty && form.controls.title.errors}">
+                        <div class="ui left icon input">
+                            <i class="edit icon"></i>
+                            <input type="text" name="title" class="form-control" placeholder="Memento Title" autocomplete="off" formControlName="title"
+                            />
+                            <ul class="help-block">
+                                <li *ngIf="form.controls.title.dirty && form.controls.title.errors?.required">This field is required.</li>
+                                <li *ngIf="(form.controls.title.dirty && form.controls.title.errors?.minlength) || (form.controls.title.dirty && form.controls.title.errors?.maxlength)">Max length: 50, Min length: 5</li>
+                                <li *ngIf="form.controls.title.dirty && form.controls.title.errors?.alphaNumericValidation">Must be a letter or number</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="body">Description</label>
+                    <div [ngClass]="{'has-success': form.controls.body.valid, 'has-error': form.controls.body.dirty && form.controls.body.errors}">
+                        <textarea name="body" rows="8" cols="80" placeholder="*Body" class="form-control" formControlName="body"></textarea>
+                        <ul class="help-block">
+                            <li *ngIf="form.controls.body.dirty && form.controls.body.errors?.required">This field is required.</li>
+                            <li *ngIf="(form.controls.body.dirty && form.controls.body.errors?.minlength) || (form.controls.body.dirty && form.controls.body.errors?.maxlength)">Max length: 500, Min length: 5</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="font" for="filebutton">Upload Memento</label>
+                    <div class="controls">
+                        <input type="file" name="img" class="form-control" id="filePicker" (change)="handleFileSelect($event)" formControlName="img"
+                        />
+                    </div>
+                </div>
+            </div>
+            <button [disabled]="processing" type="button" name="button" (click)="goBack()" class="btn btn-warning">Go Back</button>
+            <button [disabled]="processing || !form.valid" type="submit" name="button" class="btn btn-success">Submit</button>
+            <div class="ui error message"></div>
+        </form>
+    </div>
+</div>
+
+<div class="ui card" *ngIf="!newPost">
+    <div class="content" [routerLink]="['/profile']">
+        <div class="right floated meta">June 20, 2017</div>
+        <img class="ui avatar image" src="https://www.w3schools.com/howto/img_avatar.png"> stoil92
+    </div>
+    <div class="content fit">
+        Title
+    </div>
+    <div class="image">
+        <img src="http://www.thescoopng.com/wp-content/uploads/2016/01/plane.jpg" alt="image">
+    </div>
+    <div class="content">
+        <span class="right floated">
+            <i class="heart outline like icon"></i>
+            17 likes
+        </span>
+        <i class="comment icon"></i>
+        3 comments
+    </div>
+    <div class="content fit">
+        <div class="ui mini buttons">
+            <button class="ui  button">
+                <i class="edit icon"></i>
+            </button>
+            <div class="or"></div>
+            <button class="ui  button">
+                <i class="trash alternate icon"></i>
+            </button>
+        </div>
+        <div class="dropdown">
+            <button class="ui icon mini button">2
+                <i class="thumbs up icon"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="#">rtykk</a>
+                <a href="#">rytyr</a>
+                <a href="#">stortyryil92</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="ui icon mini button">2
+                <i class="thumbs down icon"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="#">stoil92</a>
+                <a href="#">asdasd</a>
+                <a href="#">stoasdasdil92</a>
+            </div>
+        </div>
+    </div>
+    <div class="extra content">
+        <div class="ui list">
+            <div class="item">
+                <div class="ui large transparent left icon input">
+                    <button (click)="draftComment()" class="btn color btn-icon">
+                        <i class="fa fa-send"></i>
+                    </button>
+                    <input type="text" name="comment" placeholder="Add Comment...">
+                </div>
+            </div>
+        </div>
+    </div>

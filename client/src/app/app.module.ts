@@ -14,6 +14,8 @@ import { Dashboard } from './components/dashboard/dashboard';
 import { Profile } from './components/profile/profile';
 import { AuthGuard } from './guards/auth.guard';
 import { NotAuthGuard } from './guards/notAuth.guard';
+import { Memento } from './components/memento/memento';
+import { MementoService } from './services/memento.service';
 
 
 @NgModule({
@@ -24,7 +26,8 @@ import { NotAuthGuard } from './guards/notAuth.guard';
     Dashboard,
     Register,
     Login,
-    Profile
+    Profile,
+    Memento
   ],
   imports: [
     BrowserModule,
@@ -34,6 +37,7 @@ import { NotAuthGuard } from './guards/notAuth.guard';
   ],
   providers: [
     AuthService,
+    MementoService,
     AuthGuard,
     NotAuthGuard
   ],

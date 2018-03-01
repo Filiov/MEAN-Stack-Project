@@ -7,6 +7,7 @@ import { Dashboard } from './components/dashboard/dashboard';
 import { Profile } from './components/profile/profile';
 import { AuthGuard } from './guards/auth.guard';
 import { NotAuthGuard } from './guards/notAuth.guard';
+import { Memento } from './components/memento/memento';
 
 const appRoutes: Routes = [
     { path: '', component: Home },
@@ -14,6 +15,7 @@ const appRoutes: Routes = [
     { path: 'register', component: Register, canActivate: [NotAuthGuard] },
     { path: 'login', component: Login, canActivate: [NotAuthGuard] },
     { path: 'profile', component: Profile, canActivate: [AuthGuard] },
+    { path: 'memento', component: Memento, canActivate: [AuthGuard] },
     { path: '**', component: Home }
 ];
 
