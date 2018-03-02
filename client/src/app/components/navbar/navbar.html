@@ -17,10 +17,6 @@
                 <a class="nav-link" routerLink="/memento">
                     <i class="fa fa-camera"></i> Memento</a>
             </li>
-            <li class="nav-item" *ngIf="authService.loggedIn()">
-                <a class="nav-link" routerLink="/dashboard">
-                    <i class="fa fa-search"></i> Dashboard</a>
-            </li>
             <li class="nav-item" *ngIf="!authService.loggedIn()">
                 <a class="nav-link" routerLink="/register">
                     <i class="fa fa-user"></i> Register </a>

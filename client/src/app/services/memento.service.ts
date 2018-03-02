@@ -33,4 +33,14 @@ export class MementoService {
     return this.http.get(this.domain + 'mementos/allMementos', this.options).map(res => res.json());
   }
 
+  editMemento(memento) {
+    this.createAuthenticationHeaders();
+    return this.http.put(this.domain + 'mementos/updateMemento/', memento, this.options).map(res => res.json());
+  }
+
+  getSingleMemento(id) {
+    this.createAuthenticationHeaders();
+    return this.http.get(this.domain + 'mementos/singleMemento/' + id, this.options).map(res => res.json());
+  }
+
 }

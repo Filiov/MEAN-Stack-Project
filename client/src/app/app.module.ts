@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
@@ -10,13 +11,13 @@ import { Home } from './components/home/home';
 import { Register } from './components/register/register';
 import { AuthService } from './services/auth.service';
 import { Login } from './components/login/login';
-import { Dashboard } from './components/dashboard/dashboard';
 import { Profile } from './components/profile/profile';
 import { AuthGuard } from './guards/auth.guard';
 import { NotAuthGuard } from './guards/notAuth.guard';
 import { Memento } from './components/memento/memento';
 import { MementoService } from './services/memento.service';
 import { Footer } from './components/footer/footer';
+import { EditMemento } from './components/memento/edit-memento/edit-memento';
 
 
 @NgModule({
@@ -24,16 +25,17 @@ import { Footer } from './components/footer/footer';
     AppComponent,
     Navbar,
     Home,
-    Dashboard,
     Register,
     Login,
     Profile,
     Memento,
-    Footer
+    Footer,
+    EditMemento
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    FormsModule,
     HttpModule,
     RoutingModule
   ],

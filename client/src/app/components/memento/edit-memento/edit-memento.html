@@ -1,0 +1,32 @@
+<h1 class="page-header content">edit memento</h1>
+
+<div class="row show-hide-message" *ngIf="message">
+    <div [ngClass]="messageClass">
+        {{ message }}
+    </div>
+</div>
+
+<div class="ui top aligned center aligned grid">
+    <div class="column">
+        <form class="ui large form" (submit)="updateMementoSubmit()" *ngIf="!loading">
+            <div class="ui stacked segment">
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="edit icon"></i>
+                        <input [disabled]="processing" type="text" name="title" placeholder="Memento Title" class="form-control" [(ngModel)]="memento.title"
+                        />
+                    </div>
+                </div>
+                <div class="field">
+                    <textarea [disabled]="processing" name="body" rows="8" cols="80" [(ngModel)]="memento.body" class="form-control" placeholder="Memento Description"></textarea>
+                </div>
+            </div>
+
+            <a [routerLink]="['/delete-memento/', memento._id]">
+                <button [disabled]="processing" type="button" name="button" class="btn btn-danger">Delete</button>
+            </a>
+            <button [disabled]="processing" type="button" name="button" class="btn new" (click)="goBack()">Go Back</button>
+            <button [disabled]="processing" type="submit" name="save" class="btn rel">Save Changes</button>
+        </form>
+    </div>
+</div>

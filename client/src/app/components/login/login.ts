@@ -72,7 +72,7 @@ export class Login implements OnInit {
                 if (this.previousUrl) {
                     this.router.navigate([this.previousUrl]);
                 } else {
-                    this.router.navigate(['/dashboard']);
+                    this.router.navigate(['/memento']);
                 }
             }, 2000);
           }

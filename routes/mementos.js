@@ -60,5 +60,81 @@ module.exports = (router) => {
     }).sort({ '_id': -1 });
 });
 
+router.get('/singleMemento/:id', (req, res) => {
+  if (!req.params.id) {
+    res.json({ success: false, message: 'No memento ID was provided.' }); 
+  } else {
+    Memento.findOne({ _id: req.params.id }, (err, memento) => {
+      if (err) {
+        res.json({ success: false, message: 'Not a valid memento id' }); 
+      } else {
+        if (!memento) {
+          res.json({ success: false, message: 'Memento not found.' }); 
+        } else {
+          User.findOne({ _id: req.decoded.userId }, (err, user) => {
+            if (err) {
+              res.json({ success: false, message: err }); 
+            } else {
+              if (!user) {
+                res.json({ success: false, message: 'Unable to authenticate user' }); 
+              } else {
+                if (user.username !== memento.createdBy) {
+                  res.json({ success: false, message: 'You are not authorized to edit this memento.' }); 
+                } else {
+                  res.json({ success: true, memento: memento }); 
+                }
+              }
+            }
+          });
+        }
+      }
+    });
+  }
+});
+
+router.put('/updateMemento', (req, res) => {
+  if (!req.body._id) {
+    res.json({ success: false, message: 'No memento id provided' }); 
+  } else {
+    Memento.findOne({ _id: req.body._id }, (err, memento) => {
+      if (err) {
+        res.json({ success: false, message: 'Not a valid memento id' }); 
+      } else {
+        if (!memento) {
+          res.json({ success: false, message: 'Memento id was not found.' }); 
+        } else {
+          User.findOne({ _id: req.decoded.userId }, (err, user) => {
+            if (err) {
+              res.json({ success: false, message: err }); 
+            } else {
+              if (!user) {
+                res.json({ success: false, message: 'Unable to authenticate user.' }); 
+              } else {
+                if (user.username !== memento.createdBy) {
+                  res.json({ success: false, message: 'You are not authorized to edit this memento post.' }); 
+                } else {
+                  memento.title = req.body.title; 
+                  memento.body = req.body.body; 
+                  memento.save((err) => {
+                    if (err) {
+                      if (err.errors) {
+                        res.json({ success: false, message: 'Please ensure form is filled out properly' });
+                      } else {
+                        res.json({ success: false, message: err });
+                      }
+                    } else {
+                      res.json({ success: true, message: 'Memento Updated!' }); 
+                    }
+                  });
+                }
+              }
+            }
+          });
+        }
+      }
+    });
+  }
+});
+
   return router;
 };
