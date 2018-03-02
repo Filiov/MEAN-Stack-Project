@@ -18,6 +18,7 @@ export class Memento {
   img;
   processing;
   username;
+  mementoPosts;
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private mementoService: MementoService) {
       this.createNewMementoForm();
@@ -67,7 +68,7 @@ export class Memento {
 
   reloadPosts() {
     this.loadingPosts = true;
-
+    this.getAllMementos();
     setTimeout(() => {
       this.loadingPosts = false;
     }, 4000);
@@ -97,6 +98,7 @@ export class Memento {
           } else {
             this.messageClass = 'alert alert-success';
             this.message = data.message;
+            this.getAllMementos();
             setTimeout(() => {
                 this.newPost = false;
                 this.processing = false;
@@ -132,10 +134,18 @@ export class Memento {
     console.log(binaryString);
   }
 
+  getAllMementos() {
+    this.mementoService.getAllMementos().subscribe(data => {
+      this.mementoPosts = data.mementos;
+    });
+  }
+
   ngOnInit() {
       this.authService.getProfile().subscribe(profile => {
           this.username = profile.user.username;
       });
+
+      this.getAllMementos();
   }
 
 

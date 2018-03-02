@@ -46,5 +46,19 @@ module.exports = (router) => {
     }
   });
 
+  router.get('/allMementos', (req, res) => {
+    Memento.find({}, (err, mementos) => {
+      if (err) {
+        res.json({ success: false, message: err });
+      } else {
+        if (!mementos) {
+          res.json({ success: false, message: 'No mementos found.' }); 
+        } else {
+          res.json({ success: true, mementos: mementos }); 
+        }
+      }
+    }).sort({ '_id': -1 });
+});
+
   return router;
 };

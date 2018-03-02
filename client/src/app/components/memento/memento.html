@@ -1,15 +1,16 @@
-<h1 class="page-header">Memento Feed</h1>
+<div class="text-center">
+    <h1 class="page-header content1">memento feed</h1>
 
-<div class="row show-hide-message" *ngIf="message && newPost">
-    <div [ngClass]="messageClass">
-        {{ message }}
+    <div class="row show-hide-message" *ngIf="message && newPost">
+        <div [ngClass]="messageClass">
+            {{ message }}
+        </div>
     </div>
+
+    <button type="button" name="button" class="btn new" *ngIf="!newPost" (click)="newMementoForm()"><i class="camera retro icon"></i>&nbsp;&nbsp;New Post</button>
+    <button [disabled]="loadingPosts" type="button" name="button" class="btn rel" *ngIf="!newPost" (click)="reloadPosts()">
+        <i class="redo alternate icon"></i>&nbsp;&nbsp;Reload</button>
 </div>
-
-<button type="button" name="button" class="btn btn-warning" *ngIf="!newPost" (click)="newMementoForm()">New Post</button>
-<button [disabled]="loadingPosts" type="button" name="button" class="btn btn-default" *ngIf="!newPost" (click)="reloadPosts()">
-    <i class="redo alternate icon"></i>&nbsp;&nbsp;Reload</button>
-
 <br />
 <br />
 
@@ -38,9 +39,8 @@
                     </div>
                 </div>
                 <div class="field">
-                    <label for="body">Description</label>
                     <div [ngClass]="{'has-success': form.controls.body.valid, 'has-error': form.controls.body.dirty && form.controls.body.errors}">
-                        <textarea name="body" rows="8" cols="80" placeholder="*Body" class="form-control" formControlName="body"></textarea>
+                        <textarea name="body" rows="8" cols="80" placeholder="Description" class="form-control" formControlName="body"></textarea>
                         <ul class="help-block">
                             <li *ngIf="form.controls.body.dirty && form.controls.body.errors?.required">This field is required.</li>
                             <li *ngIf="(form.controls.body.dirty && form.controls.body.errors?.minlength) || (form.controls.body.dirty && form.controls.body.errors?.maxlength)">Max length: 500, Min length: 5</li>
@@ -55,72 +55,79 @@
                     </div>
                 </div>
             </div>
-            <button [disabled]="processing" type="button" name="button" (click)="goBack()" class="btn btn-warning">Go Back</button>
-            <button [disabled]="processing || !form.valid" type="submit" name="button" class="btn btn-success">Submit</button>
+            <button [disabled]="processing" type="button" name="button" (click)="goBack()" class="btn rel">Go Back</button>
+            <button [disabled]="processing || !form.valid" type="submit" name="button" class="btn new">Submit</button>
             <div class="ui error message"></div>
         </form>
     </div>
 </div>
 
-<div class="ui card" *ngIf="!newPost">
-    <div class="content" [routerLink]="['/profile']">
-        <div class="right floated meta">June 20, 2017</div>
-        <img class="ui avatar image" src="https://www.w3schools.com/howto/img_avatar.png"> stoil92
-    </div>
-    <div class="content fit">
-        Title
-    </div>
-    <div class="image">
-        <img src="http://www.thescoopng.com/wp-content/uploads/2016/01/plane.jpg" alt="image">
-    </div>
-    <div class="content">
-        <span class="right floated">
-            <i class="heart outline like icon"></i>
-            17 likes
-        </span>
-        <i class="comment icon"></i>
-        3 comments
-    </div>
-    <div class="content fit">
-        <div class="ui mini buttons">
-            <button class="ui  button">
-                <i class="edit icon"></i>
-            </button>
-            <div class="or"></div>
-            <button class="ui  button">
-                <i class="trash alternate icon"></i>
-            </button>
+<div *ngIf="!newPost">
+    <div class="ui card" *ngFor="let memento of mementoPosts">
+        <div class="content" [routerLink]="['/profile']">
+            <div class="right floated meta">{{ memento?.createdAt | date: 'MMM dd, yyyy' }}</div>
+            <img class="ui avatar image" src="https://www.w3schools.com/howto/img_avatar.png"> {{ memento?.createdBy }}
         </div>
-        <div class="dropdown">
-            <button class="ui icon mini button">2
-                <i class="thumbs up icon"></i>
-            </button>
-            <div class="dropdown-content">
-                <a href="#">rtykk</a>
-                <a href="#">rytyr</a>
-                <a href="#">stortyryil92</a>
-            </div>
+        <div class="content fit">
+            {{ memento?.title }}
         </div>
-        <div class="dropdown">
-            <button class="ui icon mini button">2
-                <i class="thumbs down icon"></i>
-            </button>
-            <div class="dropdown-content">
-                <a href="#">stoil92</a>
-                <a href="#">asdasd</a>
-                <a href="#">stoasdasdil92</a>
-            </div>
+        <div class="image">
+            <img [src]="memento?.img" alt="image" class="fix">
         </div>
-    </div>
-    <div class="extra content">
-        <div class="ui list">
-            <div class="item">
-                <div class="ui large transparent left icon input">
-                    <button (click)="draftComment()" class="btn color btn-icon">
-                        <i class="fa fa-send"></i>
+        <div class="content">
+            <span class="right floated">
+                <i class="heart outline like icon"></i>
+                {{ memento?.likes }}
+            </span>
+            <i class="comment outline icon"></i>
+            {{ memento?.body }}
+        </div>
+        <div class="content fit">
+            <div class="ui mini buttons">
+                <a [routerLink]="['/edit-memento/', memento._id]" *ngIf="username === memento.createdBy">
+                    <button class="ui button">
+                        <i class="edit icon"></i>
                     </button>
-                    <input type="text" name="comment" placeholder="Add Comment...">
+                </a>
+                <div class="or" *ngIf="username === memento.createdBy"></div>
+                <a [routerLink]="['/delete-memento/', memento._id]" *ngIf="username === memento.createdBy">
+                    <button class="ui button">
+                        <i class="trash alternate icon"></i>
+                    </button>
+                </a>
+            </div>
+            <div class="dropdown">
+                <button class="ui icon mini button" type="button" name="button" *ngIf="username !== memento.createdBy">Likes: 2
+                    <i class="thumbs up icon"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="#">ivan123</a>
+                    <a href="#">gisho6</a>
+                    <a href="#">stoil</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="ui icon mini button" type="button" name="button" *ngIf="username !== memento.createdBy">Dislikes: 2
+                    <i class="thumbs down icon"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="#">stoil92</a>
+                    <a href="#">asdasd</a>
+                    <a href="#">petkan1</a>
+                </div>
+            </div>
+        </div>
+        <div class="extra content">
+            <div class="ui list">
+                <div class="item">
+                    <div class="ui large transparent left icon input">
+                        <button (click)="draftComment()" class="btn color btn-icon">
+                            <i class="fa fa-send"></i>
+                        </button>
+                        <input type="text" name="comment" placeholder="Add Comment...">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>

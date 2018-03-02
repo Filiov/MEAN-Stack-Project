@@ -1,9 +1,10 @@
-<div class="jumbotron text-center">
-    <h1>MEMENTO</h1>
-    <p class="lead">Welcome to MEMENTO by <strong>Stoil Filiov</strong></p>
+<div class="text-center">
+    <h1 class="font">memento</h1>
+    <p class="lead">Welcome to <span class="font-1">memento</span> by <strong>Stoil Filiov</strong></p>
     <div>
-      <a routerLink="/register" class="btn btn-primary">Register</a>
-      <a routerLink="/login" class="btn btn-default">Login</a>
+      <a *ngIf="!authService.loggedIn()" routerLink="/register" class="btn new">Register</a>
+      <a *ngIf="!authService.loggedIn()" routerLink="/login" class="btn rel">Login</a>
+      <a *ngIf="authService.loggedIn()" routerLink="/memento" class="btn mem">View Mementos</a>
     </div>
   </div>
   

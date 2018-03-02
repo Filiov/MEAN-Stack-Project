@@ -17,7 +17,8 @@ module.exports = (router) => {
           let user = new User({
             email: req.body.email.toLowerCase(),
             username: req.body.username.toLowerCase(),
-            password: req.body.password
+            password: req.body.password,
+            avatar: req.body.avatar
           });
           user.save((err) => {
             if (err) {

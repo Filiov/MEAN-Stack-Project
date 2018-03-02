@@ -18,6 +18,8 @@ export class Register implements OnInit {
     usernameValid;
     usernameMessage;
     processing = false;
+    private base64textString: String = '';
+    avatar;
 
     constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
         this.createForm()
@@ -35,6 +37,7 @@ export class Register implements OnInit {
                 Validators.maxLength(15),
                 this.validateUsername
             ])],
+            avatar : [''],
             email: ['', Validators.compose([
                 Validators.required,
                 Validators.minLength(5),
@@ -56,6 +59,7 @@ export class Register implements OnInit {
         this.form.controls['email'].disable();
         this.form.controls['password'].disable();
         this.form.controls['confirm'].disable();
+        this.form.controls['avatar'].disable();
     }
 
     enableForm() {
@@ -63,6 +67,7 @@ export class Register implements OnInit {
         this.form.controls['email'].enable();
         this.form.controls['password'].enable();
         this.form.controls['confirm'].enable();
+        this.form.controls['avatar'].enable();
     }
 
     validateEmail(controls) {
@@ -108,7 +113,8 @@ export class Register implements OnInit {
         const user = {
             email: this.form.get('email').value,
             username: this.form.get('username').value,
-            password: this.form.get('password').value
+            password: this.form.get('password').value,
+            avatar: this.avatar
     }
         this.authService.registerUser(user).subscribe(data => {
             if (!data.success) {
@@ -149,6 +155,26 @@ export class Register implements OnInit {
             }
         });
     }
+
+    handleFileSelect(evt) {
+        const files = evt.target.files;
+        const file = files[0];
+    
+        if (files && file) {
+          const reader = new FileReader();
+            
+          reader.onload = this._handleReaderLoaded.bind(this);
+            
+          reader.readAsDataURL(file);
+        }
+      }
+    
+      _handleReaderLoaded(readerEvt) {
+        const binaryString = readerEvt.target.result;
+        this.avatar = binaryString;
+        this.base64textString = btoa(binaryString);
+        console.log(binaryString);
+      }
     
 
 

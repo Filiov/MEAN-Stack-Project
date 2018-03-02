@@ -1,0 +1,25 @@
+@import url(https://fonts.googleapis.com/css?family=Galada);
+
+.font {
+    font-family: 'Galada';
+    font-size: 55px;
+    color: #61bdc5;
+}
+
+.font-1 {
+    font-family: 'Galada';
+    font-size: 25px;
+    color: #61bdc5;
+}
+
+.new {
+    background-color:#8c6ba7;
+}
+
+.rel {
+  background-color:#4088b1;
+}
+
+.mem {
+    background-color:#61bdc5;
+}

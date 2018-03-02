@@ -16,6 +16,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { NotAuthGuard } from './guards/notAuth.guard';
 import { Memento } from './components/memento/memento';
 import { MementoService } from './services/memento.service';
+import { Footer } from './components/footer/footer';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { MementoService } from './services/memento.service';
     Register,
     Login,
     Profile,
-    Memento
+    Memento,
+    Footer
   ],
   imports: [
     BrowserModule,

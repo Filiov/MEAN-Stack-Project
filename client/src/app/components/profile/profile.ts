@@ -7,9 +7,10 @@ import { AuthService } from '../../services/auth.service';
     styleUrls: ['./profile.css']
 })
 export class Profile implements OnInit {
- 
+
     username;
     email;
+    avatar;
 
     constructor(private authService: AuthService ) { }
 
@@ -17,9 +18,8 @@ export class Profile implements OnInit {
         this.authService.getProfile().subscribe(profile => {
             this.username = profile.user.username;
             this.email = profile.user.email;
+            this.avatar = profile.user.avatar;
         });
     }
-
-
 
 }
