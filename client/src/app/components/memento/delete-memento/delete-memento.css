@@ -1,0 +1,10 @@
+.font {
+    font-family: 'Galada';
+    font-size: 40px;
+    color: #61bdc5;
+    text-align: center;
+  }
+
+  .center {
+    margin: auto;
+  }

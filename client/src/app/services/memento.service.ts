@@ -43,4 +43,19 @@ export class MementoService {
     return this.http.get(this.domain + 'mementos/singleMemento/' + id, this.options).map(res => res.json());
   }
 
+  deleteMemento(id) {
+    this.createAuthenticationHeaders();
+    return this.http.delete(this.domain + 'mementos/deleteMemento/' + id, this.options).map(res => res.json());
+  }
+
+  likeMemento(id) {
+    const mementoData = { id: id };
+    return this.http.put(this.domain + 'mementos/likeMemento/', mementoData, this.options).map(res => res.json());
+  }
+
+  dislikeMemento(id) {
+    const mementoData = { id: id };
+    return this.http.put(this.domain + 'mementos/dislikeMemento/', mementoData, this.options).map(res => res.json());
+}
+
 }

@@ -18,6 +18,7 @@ import { Memento } from './components/memento/memento';
 import { MementoService } from './services/memento.service';
 import { Footer } from './components/footer/footer';
 import { EditMemento } from './components/memento/edit-memento/edit-memento';
+import { DeleteMemento } from './components/memento/delete-memento/delete-memento';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { EditMemento } from './components/memento/edit-memento/edit-memento';
     Profile,
     Memento,
     Footer,
-    EditMemento
+    DeleteMemento,
+    EditMemento,
   ],
   imports: [
     BrowserModule,

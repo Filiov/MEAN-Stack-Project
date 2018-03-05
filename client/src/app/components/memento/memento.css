@@ -75,9 +75,9 @@
     padding-bottom: 5px;
 }
 
-.color:hover {
+/* .color:hover {
     background-color: #61bdc5;
-}
+} */
 
  .grid {
     height: 100%;
@@ -132,4 +132,15 @@
     background-color:#61bdc5;
 }
 
+.uup {
+    background-color: #c3ffc5;
+}
+
+.do {
+    background-color: #ffc3c3;
+}
+
+.ed {
+    background-color: #c3f1ff;
+}
 

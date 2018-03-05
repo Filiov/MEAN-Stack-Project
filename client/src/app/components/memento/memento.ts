@@ -140,6 +140,18 @@ export class Memento {
     });
   }
 
+  likeMemento(id) {
+    this.mementoService.likeMemento(id).subscribe(data => {
+      this.getAllMementos(); 
+    });
+  }
+
+  dislikeMemento(id) {
+    this.mementoService.dislikeMemento(id).subscribe(data => {
+      this.getAllMementos();
+    });
+}
+
   ngOnInit() {
       this.authService.getProfile().subscribe(profile => {
           this.username = profile.user.username;

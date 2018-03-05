@@ -8,6 +8,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { NotAuthGuard } from './guards/notAuth.guard';
 import { Memento } from './components/memento/memento';
 import { EditMemento } from './components/memento/edit-memento/edit-memento';
+import { DeleteMemento } from './components/memento/delete-memento/delete-memento';
 
 
 const appRoutes: Routes = [
@@ -17,6 +18,7 @@ const appRoutes: Routes = [
     { path: 'profile', component: Profile, canActivate: [AuthGuard] },
     { path: 'memento', component: Memento, canActivate: [AuthGuard] },
     { path: 'edit-memento/:id', component: EditMemento, canActivate: [AuthGuard] },
+    { path: 'delete-memento/:id', component: DeleteMemento, canActivate: [AuthGuard] },
     { path: '**', component: Home }
 ];
 

@@ -86,35 +86,31 @@
         <div class="content fit">
             <div class="ui mini buttons">
                 <a [routerLink]="['/edit-memento/', memento._id]" *ngIf="username === memento.createdBy">
-                    <button class="ui button">
+                    <button class="ui button ed">
                         <i class="edit icon"></i>
                     </button>
                 </a>
                 <div class="or" *ngIf="username === memento.createdBy"></div>
                 <a [routerLink]="['/delete-memento/', memento._id]" *ngIf="username === memento.createdBy">
-                    <button class="ui button">
+                    <button class="ui button do">
                         <i class="trash alternate icon"></i>
                     </button>
                 </a>
             </div>
             <div class="dropdown">
-                <button class="ui icon mini button" type="button" name="button" *ngIf="username !== memento.createdBy">Likes: 2
+                <button [disabled]="memento?.likedBy.indexOf(username) > -1" class="ui icon mini button uup" type="button" name="button" *ngIf="username !== memento.createdBy" (click)="likeMemento(memento._id)">Likes: {{memento?.likes}}
                     <i class="thumbs up icon"></i>
                 </button>
                 <div class="dropdown-content">
-                    <a href="#">ivan123</a>
-                    <a href="#">gisho6</a>
-                    <a href="#">stoil</a>
+                    <a [routerLink]="['/user/', liker]" *ngFor="let liker of memento.likedBy">{{ liker }}</a>
                 </div>
             </div>
             <div class="dropdown">
-                <button class="ui icon mini button" type="button" name="button" *ngIf="username !== memento.createdBy">Dislikes: 2
+                <button [disabled]="memento.dislikedBy.indexOf(username) > -1" class="ui icon mini button do" type="button" name="button" *ngIf="username !== memento.createdBy" (click)="dislikeMemento(memento._id)">Dislikes: {{ memento?.dislikes }}
                     <i class="thumbs down icon"></i>
                 </button>
                 <div class="dropdown-content">
-                    <a href="#">stoil92</a>
-                    <a href="#">asdasd</a>
-                    <a href="#">petkan1</a>
+                    <a [routerLink]="['/user/', disliker]" *ngFor="let disliker of memento.dislikedBy">{{ disliker }}</a>
                 </div>
             </div>
         </div>
