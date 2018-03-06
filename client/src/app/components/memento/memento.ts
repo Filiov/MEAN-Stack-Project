@@ -106,7 +106,7 @@ export class Memento {
     cancelSubmission(id) {
         const index = this.newComment.indexOf(id);
         this.newComment.splice(index, 1);
-        this.commentForm.rest();
+        this.commentForm.reset();
         this.enableCommentForm();
         this.processing = false;
     }

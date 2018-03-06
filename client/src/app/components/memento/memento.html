@@ -67,7 +67,7 @@
     <div class="ui card" *ngFor="let memento of mementoPosts">
         <div class="content" [routerLink]="['/profile']">
             <div class="right floated meta">{{ memento?.createdAt | date: 'MMM dd, yyyy' }}</div>
-            <img class="ui avatar image" src="https://www.w3schools.com/howto/img_avatar.png"> {{ memento?.createdBy }}
+            <img class="ui avatar image" [src]="memento?.avatar"> {{ memento?.createdBy }}
         </div>
         <div class="content fit">
             {{ memento?.title }}
@@ -84,22 +84,25 @@
             {{ memento?.body }}
         </div>
         <div class="content fit">
+            <button (click)="draftComment(memento._id)" [disabled]="newComment.indexOf(memento._id) > -1" class="ui icon mini button rel">Add Comment
+                <i class="send icon"></i>
+            </button>
             <div class="ui mini buttons">
                 <a [routerLink]="['/edit-memento/', memento._id]" *ngIf="username === memento.createdBy">
-                    <button class="ui button ed">Edit&nbsp;&nbsp;
+                    <button class="ui button ed">
                         <i class="edit icon"></i>
                     </button>
                 </a>
                 <div class="or" *ngIf="username === memento.createdBy"></div>
                 <a [routerLink]="['/delete-memento/', memento._id]" *ngIf="username === memento.createdBy">
-                    <button class="ui button do">Delete&nbsp;&nbsp;
+                    <button class="ui button do">
                         <i class="trash alternate icon"></i>
                     </button>
                 </a>
             </div>
             <div class="dropdown">
                 <button [disabled]="memento?.likedBy.indexOf(username) > -1" class="ui icon mini button uup" type="button" name="button"
-                    *ngIf="username !== memento.createdBy" (click)="likeMemento(memento._id)">Likes: {{memento?.likes}}
+                    *ngIf="username !== memento.createdBy" (click)="likeMemento(memento._id)"> {{memento?.likes}}
                     <i class="thumbs up icon"></i>
                 </button>
                 <div class="dropdown-content">
@@ -108,7 +111,7 @@
             </div>
             <div class="dropdown">
                 <button [disabled]="memento.dislikedBy.indexOf(username) > -1" class="ui icon mini button do" type="button" name="button"
-                    *ngIf="username !== memento.createdBy" (click)="dislikeMemento(memento._id)">Dislikes: {{ memento?.dislikes }}
+                    *ngIf="username !== memento.createdBy" (click)="dislikeMemento(memento._id)"> {{ memento?.dislikes }}
                     <i class="thumbs down icon"></i>
                 </button>
                 <div class="dropdown-content">
@@ -117,13 +120,9 @@
             </div>
         </div>
         <div class="extra content">
-            <!-- <div class="ui large transparent left icon input"> -->
-                <div class="fit">
-            <button (click)="draftComment(memento._id)" [disabled]="newComment.indexOf(memento._id) > -1" class="ui icon mini button mem">Add Comment
-                <i class="send icon"></i>
-            </button>
-        </div>
-            <!-- <input type="text" name="comment" placeholder="Add Comment..."> -->
+            <div class="fit">
+
+            </div>
             <div *ngIf="newComment.indexOf(memento._id) > -1" class="fit">
                 <form [formGroup]="commentForm">
                     <textarea type="text" name="comment" formControlName="comment" placeholder="Add Comment..."></textarea>
@@ -141,28 +140,23 @@
                     </button>
                 </form>
             </div>
-            <!-- <div class="item"> -->
             <div *ngIf="enabledComments.indexOf(memento._id) === -1 && memento.comments.length > 0" class="list-group-item">
                 <span (click)="expand(memento._id)">
                     Show comments&nbsp;&nbsp;
                     <div class="fa fa-comment"></div>
                 </span>
             </div>
-            <!-- </div> -->
-            <!-- <div class="item"> -->
             <div *ngIf="enabledComments.indexOf(memento._id) > -1" class="list-group-item">
                 <span (click)="collapse(memento._id)">
                     Hide Comments&nbsp;&nbsp;
                     <div class="fa fa-comment"></div>
                 </span>
             </div>
-            <!-- </div> -->
             <div *ngIf="enabledComments.indexOf(memento._id) > -1">
-                <div *ngFor="let comment of memento.comments" class="ui info mini message item">
+                <div *ngFor="let comment of memento.comments" class="ui info tiny message item">
                     <strong>{{ comment.commentator }}:</strong> {{ comment.comment }}
                 </div>
             </div>
-            <!-- </div> -->
         </div>
     </div>
 </div>
