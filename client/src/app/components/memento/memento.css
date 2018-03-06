@@ -96,8 +96,12 @@
       color: white;
   }
 
-  .button:hover {
+  /* .button:hover {
       background-color: #61bdc580;
+  } */
+
+  .ui.buttons .button:last-child {
+      padding-right: 10px;
   }
 
   .content1 {
@@ -113,7 +117,7 @@
   }
 
   .fix {
-      max-height: 300px;
+      height: 210px !important;
   }
 
   li {
@@ -122,25 +126,44 @@
 
   .new {
       background-color: #8c6ba7;
+      color:white;
   }
 
   .rel {
     background-color:#4088b1;
+    color:white;
   }
 
   .mem {
     background-color:#61bdc5;
+    color:white;
 }
 
 .uup {
-    background-color: #c3ffc5;
+    background-color: #ffffff;
+    color: #008f24;
+    border: 1px solid #008f24;
 }
 
-.do {
-    background-color: #ffc3c3;
+.do {   
+    background-color: #ffffff;
+    color: #e63939;
+    border: 1px solid #e63939;
 }
 
 .ed {
-    background-color: #c3f1ff;
+    background-color: #ffffff;
+    color: #61bdc5;
+    border: 1px solid #61bdc5;
 }
 
+.list-group-item {
+    margin-top: 5px;
+    background-color: #fafafa;
+    border: 1px solid #00000000;
+    margin-bottom: 1px;
+}
+
+textarea {
+    margin-top: 10px;
+}

@@ -22,33 +22,33 @@ import { DeleteMemento } from './components/memento/delete-memento/delete-mement
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    Navbar,
-    Home,
-    Register,
-    Login,
-    Profile,
-    Memento,
-    Footer,
-    DeleteMemento,
-    EditMemento,
-  ],
-  imports: [
-    BrowserModule,
-    ReactiveFormsModule,
-    FormsModule,
-    HttpModule,
-    RoutingModule
-  ],
-  providers: [
-    AuthService,
-    MementoService,
-    AuthGuard,
-    NotAuthGuard
-  ],
-  bootstrap: [
-    AppComponent
-  ]
+    declarations: [
+        AppComponent,
+        Navbar,
+        Home,
+        Register,
+        Login,
+        Profile,
+        Memento,
+        Footer,
+        DeleteMemento,
+        EditMemento,
+    ],
+    imports: [
+        BrowserModule,
+        ReactiveFormsModule,
+        FormsModule,
+        HttpModule,
+        RoutingModule
+    ],
+    providers: [
+        AuthService,
+        MementoService,
+        AuthGuard,
+        NotAuthGuard
+    ],
+    bootstrap: [
+        AppComponent
+    ]
 })
 export class AppModule { }

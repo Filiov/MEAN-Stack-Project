@@ -36,67 +36,67 @@ const emailValidators = [
 
 let usernameLengthChecker = (username) => {
     if (!username) {
-      return false;
-    } else {
-      if (username.length < 3 || username.length > 15) {
         return false;
-      } else {
-        return true;
-      }
+    } else {
+        if (username.length < 3 || username.length > 15) {
+            return false;
+        } else {
+            return true;
+        }
     }
-  };
+};
 
-  let validUsername = (username) => {
+let validUsername = (username) => {
     if (!username) {
-      return false;
+        return false;
     } else {
-      
-      return regExp.test(username);
-    }
-  };const regExp = new RegExp(/^[a-zA-Z0-9]+$/);
 
-  const usernameValidators = [
+        return regExp.test(username);
+    }
+}; const regExp = new RegExp(/^[a-zA-Z0-9]+$/);
+
+const usernameValidators = [
     {
-      validator: usernameLengthChecker,
-      message: 'Username must be at least 3 characters but no more than 15'
+        validator: usernameLengthChecker,
+        message: 'Username must be at least 3 characters but no more than 15'
     },
     {
-      validator: validUsername,
-      message: 'Username must not have any special characters'
+        validator: validUsername,
+        message: 'Username must not have any special characters'
     }
-  ];
+];
 
-  let passwordLengthChecker = (password) => {
+let passwordLengthChecker = (password) => {
     if (!password) {
-      return false;
+        return false;
     } else {
-      if (password.length < 8 || password.length > 35) {
-        return false; 
-      } else {
-        return true; 
-      }
+        if (password.length < 8 || password.length > 35) {
+            return false;
+        } else {
+            return true;
+        }
     }
-  };
-  
-  let validPassword = (password) => {
+};
+
+let validPassword = (password) => {
     if (!password) {
-      return false; 
+        return false;
     } else {
-      const regExp = new RegExp(/^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\d])(?=.*?[\W]).{8,35}$/);
-      return regExp.test(password);
+        const regExp = new RegExp(/^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\d])(?=.*?[\W]).{8,35}$/);
+        return regExp.test(password);
     }
-  };
-  
-  const passwordValidators = [
+};
+
+const passwordValidators = [
     {
-      validator: passwordLengthChecker,
-      message: 'Password must be at least 8 characters but no more than 35'
+        validator: passwordLengthChecker,
+        message: 'Password must be at least 8 characters but no more than 35'
     },
     {
-      validator: validPassword,
-      message: 'Must have at least one uppercase, lowercase, special character, and number'
+        validator: validPassword,
+        message: 'Must have at least one uppercase, lowercase, special character, and number'
     }
-  ];
+];
 
 const userSchema = new Schema({
     email: { type: String, required: true, unique: true, lowercase: true, validate: emailValidators },
@@ -116,7 +116,7 @@ userSchema.pre('save', function (next) {
     });
 });
 
-userSchema.methods.comparePassword = function(password) {
+userSchema.methods.comparePassword = function (password) {
     return bcrypt.compareSync(password, this.password);
 };
 
