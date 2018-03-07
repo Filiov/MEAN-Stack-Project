@@ -140,7 +140,7 @@
   }
 
   .mem {
-    background-color:#61bdc5;
+    background-color:#78bfc5;
     color:white;
 }
 
@@ -155,7 +155,7 @@
 }
 
 .ed {
-    background-color: #61bdc5;
+    background-color: #9e8eac;
     color: #ffffff;
 }
 
@@ -168,4 +168,12 @@
 
 textarea {
     margin-top: 10px;
+}
+
+.ui.tiny.message {
+    margin-bottom: 0px;
+}
+
+.ui.tiny.message[_ngcontent-c3] {
+    margin-top: 4px;
 }

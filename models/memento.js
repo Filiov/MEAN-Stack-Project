@@ -78,6 +78,7 @@ const mementoSchema = new Schema({
     title: { type: String, required: true, validate: titleValidators },
     body: { type: String, required: true, validate: bodyValidators },
     img: { type: String },
+    avatar: { type: String },
     createdBy: { type: String },
     createdAt: { type: Date, default: Date.now() },
     likes: { type: Number, default: 0 },

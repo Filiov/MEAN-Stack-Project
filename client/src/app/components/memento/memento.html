@@ -67,7 +67,7 @@
     <div class="ui card" *ngFor="let memento of mementoPosts">
         <div class="content" [routerLink]="['/profile']">
             <div class="right floated meta">{{ memento?.createdAt | date: 'MMM dd, yyyy' }}</div>
-            <img class="ui avatar image" [src]="memento?.avatar"> {{ memento?.createdBy }}
+            <img class="ui avatar image" [src]="memento?.img"> {{ memento?.createdBy }}
         </div>
         <div class="content fit">
             {{ memento?.title }}
@@ -84,7 +84,7 @@
             {{ memento?.body }}
         </div>
         <div class="content fit">
-            <button (click)="draftComment(memento._id)" [disabled]="newComment.indexOf(memento._id) > -1" class="ui icon mini button rel">Add Comment
+            <button (click)="draftComment(memento._id)" [disabled]="newComment.indexOf(memento._id) > -1" class="ui icon mini button mem">Add Comment
                 <i class="send icon"></i>
             </button>
             <div class="ui mini buttons">
@@ -101,7 +101,7 @@
                 </a>
             </div>
             <div class="dropdown">
-                <button [disabled]="memento?.likedBy.indexOf(username) > -1" class="ui icon mini button uup" type="button" name="button"
+                <button [disabled]="memento?.likedBy.indexOf(username) > -1" class="ui icon mini button rel" type="button" name="button"
                     *ngIf="username !== memento.createdBy" (click)="likeMemento(memento._id)"> {{memento?.likes}}
                     <i class="thumbs up icon"></i>
                 </button>
@@ -110,7 +110,7 @@
                 </div>
             </div>
             <div class="dropdown">
-                <button [disabled]="memento.dislikedBy.indexOf(username) > -1" class="ui icon mini button do" type="button" name="button"
+                <button [disabled]="memento.dislikedBy.indexOf(username) > -1" class="ui icon mini button new" type="button" name="button"
                     *ngIf="username !== memento.createdBy" (click)="dislikeMemento(memento._id)"> {{ memento?.dislikes }}
                     <i class="thumbs down icon"></i>
                 </button>
