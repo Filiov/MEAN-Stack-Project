@@ -19,6 +19,7 @@ export class Memento {
     img;
     processing;
     username;
+    avatar;
     mementoPosts;
     newComment = [];
     enabledComments = [];
@@ -212,6 +213,7 @@ export class Memento {
     ngOnInit() {
         this.authService.getProfile().subscribe(profile => {
             this.username = profile.user.username;
+            this.avatar = profile.user.avatar;
         });
 
         this.getAllMementos();

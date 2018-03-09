@@ -5,9 +5,47 @@
         <strong>Stoil Filiov</strong>
     </p>
     <div>
-        <a *ngIf="!authService.loggedIn()" routerLink="/register" class="btn new">Register</a>
-        <a *ngIf="!authService.loggedIn()" routerLink="/login" class="btn rel">Login</a>
-        <a *ngIf="authService.loggedIn()" routerLink="/memento" class="btn mem">View Mementos</a>
+        <a *ngIf="!authService.loggedIn()" routerLink="/register" class="btn new"><i class="pencil alternate icon"></i>&nbsp;&nbsp;Register</a>
+        <a *ngIf="!authService.loggedIn()" routerLink="/login" class="btn rel"><i class="unlock alternate icon"></i>&nbsp;&nbsp;Login</a>
+        <a *ngIf="authService.loggedIn()" routerLink="/memento" class="btn mem"><i class="rss icon"></i>&nbsp;&nbsp;View Mementos</a>
     </div>
 </div>
 
+<div class="background">
+    <img src="../../../assets/3.png" alt="" class="ui image responsive cent">
+
+    <div class="row">
+        <div class="col-sm-6 col-md-4 mb ml">
+            <div class=thumbnail>
+                <div class=caption>
+                    <h3  class="font-3">Upload Photos&nbsp;&nbsp;<i class="camera retro icon"></i></h3>
+                    <p>With
+                        <span class="font-2">memento</span> Application you can upload as may photos as you want from your device.
+                        <span class="font-2">memento</span> makes uploading very easy and enjoyable activity.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4 mb">
+            <div class=thumbnail>
+                <div class=caption>
+                    <h3  class="font-3">Like & Share&nbsp;&nbsp;<i class="thumbs up icon"></i></h3>
+                    <p>You can like and dislike every photo in
+                        <span class="font-2">memento</span> with only one click. This makes the Application perfect for showing your approval
+                        or disapproval.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-3 mb mr">
+            <div class=thumbnail>
+                <div class=caption>
+                    <h3 class="font-3">Comment & Discuss&nbsp;&nbsp;<i class="comment icon"></i></h3>
+                    <p>In
+                        <span class="font-2">memento</span> you can post comments and discuss every photo with other people around the globe.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -21,7 +21,7 @@
 }
 
 .mem {
-    background-color:#61bdc5;
+    background-color:rgb(97, 189, 197);
 }
 
 .text-center {
@@ -29,5 +29,30 @@
     margin-bottom: 80px;
 }
 
+.background {
+    background-color: #75bbc2;
+}
 
+.font-2 {
+    font-family: 'Galada';
+    font-size: 25px;
+    color: #ffffff;
+}
 
+.font-3 {
+    font-family: 'Galada';
+    font-size: 35px;
+    color: #ffffff;
+}
+
+.mb {
+    margin-bottom: 30px;
+    margin-left: 40px;
+}
+
+.cent {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 500px;
+}

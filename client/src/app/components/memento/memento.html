@@ -1,160 +1,159 @@
-<div class="text-center">
-    <h1 class="page-header content1">memento feed</h1>
-
-    <div class="row show-hide-message" *ngIf="message && newPost">
-        <div [ngClass]="messageClass">
-            {{ message }}
-        </div>
-    </div>
-
-    <button type="button" name="button" class="btn new" *ngIf="!newPost" (click)="newMementoForm()">
-        <i class="camera retro icon"></i>&nbsp;&nbsp;New Post</button>
-    <button [disabled]="loadingPosts" type="button" name="button" class="btn rel" *ngIf="!newPost" (click)="reloadPosts()">
-        <i class="redo alternate icon"></i>&nbsp;&nbsp;Reload</button>
-</div>
-<br />
-<br />
-
-<div class="ui top aligned center aligned grid" *ngIf="newPost">
-    <div class="column1">
-        <h2 class="ui image header">
-            <img src="assets/cam.png" class="image1">
-            <div class="content1">
-                Upload New Memento
+<div class="container">
+    <div class="text-center">
+        <h1 class="page-header content1">memento feed</h1>
+        
+        <div class="row show-hide-message" *ngIf="message && newPost">
+            <div [ngClass]="messageClass">
+                {{ message }}
             </div>
-        </h2>
-        <form class="ui large form" [formGroup]="form" name="mementoForm" (submit)="onMementoSubmit()">
-            <div class="ui stacked segment">
-                <div class="field">
-                    <div [ngClass]="{'has-success': form.controls.title.valid, 'has-error': form.controls.title.dirty && form.controls.title.errors}">
-                        <div class="ui left icon input">
-                            <i class="edit icon"></i>
-                            <input type="text" name="title" class="form-control" placeholder="Memento Title" autocomplete="off" formControlName="title"
+        </div>
+
+        <button type="button" name="button" class="btn new" *ngIf="!newPost" (click)="newMementoForm()">
+            <i class="camera retro icon"></i>&nbsp;&nbsp;New Post</button>
+        <button [disabled]="loadingPosts" type="button" name="button" class="btn rel" *ngIf="!newPost" (click)="reloadPosts()">
+            <i class="redo alternate icon"></i>&nbsp;&nbsp;Reload</button>
+    </div>
+    <br />
+    <br />
+
+    <div class="ui top aligned center aligned grid" *ngIf="newPost">
+        <div class="column1">
+            <h2 class="ui image header">
+                <img src="assets/cam.png" class="image1">
+                <div class="content1">
+                    Upload New Memento
+                </div>
+            </h2>
+            <form class="ui large form" [formGroup]="form" name="mementoForm" (submit)="onMementoSubmit()">
+                <div class="ui stacked segment">
+                    <div class="field">
+                        <div [ngClass]="{'has-success': form.controls.title.valid, 'has-error': form.controls.title.dirty && form.controls.title.errors}">
+                            <div class="ui left icon input">
+                                <i class="edit icon"></i>
+                                <input type="text" name="title" class="form-control" placeholder="Memento Title" autocomplete="off" formControlName="title"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="help-block">
+                        <li *ngIf="form.controls.title.dirty && form.controls.title.errors?.required">This field is required.</li>
+                        <li *ngIf="(form.controls.title.dirty && form.controls.title.errors?.minlength) || (form.controls.title.dirty && form.controls.title.errors?.maxlength)">Max length: 50, Min length: 5</li>
+                        <li *ngIf="form.controls.title.dirty && form.controls.title.errors?.alphaNumericValidation">Must be a letter or number</li>
+                    </ul>
+                    <div class="field">
+                        <div [ngClass]="{'has-success': form.controls.body.valid, 'has-error': form.controls.body.dirty && form.controls.body.errors}">
+                            <textarea name="body" rows="8" cols="80" placeholder="Description" class="form-control" formControlName="body"></textarea>
+                        </div>
+                    </div>
+                    <ul class="help-block">
+                        <li *ngIf="form.controls.body.dirty && form.controls.body.errors?.required">This field is required.</li>
+                        <li *ngIf="(form.controls.body.dirty && form.controls.body.errors?.minlength) || (form.controls.body.dirty && form.controls.body.errors?.maxlength)">Max length: 500, Min length: 5</li>
+                    </ul>
+                    <div class="field">
+                        <label class="font" for="filebutton">Upload Memento</label>
+                        <div class="controls">
+                            <input type="file" name="img" class="form-control" id="filePicker" (change)="handleFileSelect($event)" formControlName="img"
                             />
                         </div>
                     </div>
                 </div>
-                <ul class="help-block">
-                    <li *ngIf="form.controls.title.dirty && form.controls.title.errors?.required">This field is required.</li>
-                    <li *ngIf="(form.controls.title.dirty && form.controls.title.errors?.minlength) || (form.controls.title.dirty && form.controls.title.errors?.maxlength)">Max length: 50, Min length: 5</li>
-                    <li *ngIf="form.controls.title.dirty && form.controls.title.errors?.alphaNumericValidation">Must be a letter or number</li>
-                </ul>
-                <div class="field">
-                    <div [ngClass]="{'has-success': form.controls.body.valid, 'has-error': form.controls.body.dirty && form.controls.body.errors}">
-                        <textarea name="body" rows="8" cols="80" placeholder="Description" class="form-control" formControlName="body"></textarea>
-                    </div>
-                </div>
-                <ul class="help-block">
-                    <li *ngIf="form.controls.body.dirty && form.controls.body.errors?.required">This field is required.</li>
-                    <li *ngIf="(form.controls.body.dirty && form.controls.body.errors?.minlength) || (form.controls.body.dirty && form.controls.body.errors?.maxlength)">Max length: 500, Min length: 5</li>
-                </ul>
-                <div class="field">
-                    <label class="font" for="filebutton">Upload Memento</label>
-                    <div class="controls">
-                        <input type="file" name="img" class="form-control" id="filePicker" (change)="handleFileSelect($event)" formControlName="img"
-                        />
-                    </div>
-                </div>
-            </div>
-            <button [disabled]="processing" type="button" name="button" (click)="goBack()" class="btn rel">Go Back</button>
-            <button [disabled]="processing || !form.valid" type="submit" name="button" class="btn new">Submit</button>
-            <div class="ui error message"></div>
-        </form>
+                <button [disabled]="processing" type="button" name="button" (click)="goBack()" class="btn rel">Go Back</button>
+                <button [disabled]="processing || !form.valid" type="submit" name="button" class="btn new">Submit</button>
+                <div class="ui error message"></div>
+            </form>
+        </div>
     </div>
-</div>
 
-<div *ngIf="!newPost">
-    <div class="ui card" *ngFor="let memento of mementoPosts">
-        <div class="content" [routerLink]="['/profile']">
-            <div class="right floated meta">{{ memento?.createdAt | date: 'MMM dd, yyyy' }}</div>
-            <img class="ui avatar image" [src]="memento?.img"> {{ memento?.createdBy }}
-        </div>
-        <div class="content fit">
-            {{ memento?.title }}
-        </div>
-        <div class="image">
-            <img [src]="memento?.img" alt="image" class="fix">
-        </div>
-        <div class="content">
-            <span class="right floated">
-                <i class="heart outline like icon"></i>
-                {{ memento?.likes }}
-            </span>
-            <i class="comment outline icon"></i>
-            {{ memento?.body }}
-        </div>
-        <div class="content fit">
-            <button (click)="draftComment(memento._id)" [disabled]="newComment.indexOf(memento._id) > -1" class="ui icon mini button mem">Add Comment
-                <i class="send icon"></i>
-            </button>
-            <div class="ui mini buttons">
-                <a [routerLink]="['/edit-memento/', memento._id]" *ngIf="username === memento.createdBy">
-                    <button class="ui button ed">
-                        <i class="edit icon"></i>
-                    </button>
-                </a>
-                <div class="or" *ngIf="username === memento.createdBy"></div>
-                <a [routerLink]="['/delete-memento/', memento._id]" *ngIf="username === memento.createdBy">
-                    <button class="ui button do">
-                        <i class="trash alternate icon"></i>
-                    </button>
-                </a>
+    <div *ngIf="!newPost">
+        <div class="ui card" *ngFor="let memento of mementoPosts">
+            <div class="content fi">
+                <div class="right floated meta">{{ memento?.createdAt | date: 'MMM dd, yyyy' }}</div>
+                <img class="ui avatar image" [src]="avatar"> {{ memento?.createdBy }}
             </div>
-            <div class="dropdown">
-                <button [disabled]="memento?.likedBy.indexOf(username) > -1" class="ui icon mini button rel" type="button" name="button"
-                    *ngIf="username !== memento.createdBy" (click)="likeMemento(memento._id)"> {{memento?.likes}}
-                    <i class="thumbs up icon"></i>
+            <div class="content fit fon">
+                {{ memento?.title }}
+            </div>
+            <div class="image">
+                <img [src]="memento?.img" alt="image" class="fix">
+            </div>
+            <div class="content fii">
+                <span class="right floated">
+                    <i class="heart outline like icon"></i>
+                    {{ memento?.likes }}
+                </span>
+                <i class="tag icon"></i>
+                {{ memento?.body }}
+            </div>
+            <div class="content fit fiii">
+                <button (click)="draftComment(memento._id)" [disabled]="newComment.indexOf(memento._id) > -1" class="ui icon mini button rel">Add Comment
+                    <i class="send icon"></i>
                 </button>
-                <div class="dropdown-content">
-                    <a [routerLink]="['/user/', liker]" *ngFor="let liker of memento.likedBy">{{ liker }}</a>
+                <div class="ui mini buttons">
+                    <a [routerLink]="['/edit-memento/', memento._id]" *ngIf="username === memento.createdBy">
+                        <button class="ui button ed">
+                            <i class="edit icon"></i>
+                        </button>
+                    </a>
+                    <div class="or" *ngIf="username === memento.createdBy"></div>
+                    <a [routerLink]="['/delete-memento/', memento._id]" *ngIf="username === memento.createdBy">
+                        <button class="ui button do">
+                            <i class="trash alternate icon"></i>
+                        </button>
+                    </a>
                 </div>
-            </div>
-            <div class="dropdown">
-                <button [disabled]="memento.dislikedBy.indexOf(username) > -1" class="ui icon mini button new" type="button" name="button"
-                    *ngIf="username !== memento.createdBy" (click)="dislikeMemento(memento._id)"> {{ memento?.dislikes }}
-                    <i class="thumbs down icon"></i>
-                </button>
-                <div class="dropdown-content">
-                    <a [routerLink]="['/user/', disliker]" *ngFor="let disliker of memento.dislikedBy">{{ disliker }}</a>
-                </div>
-            </div>
-        </div>
-        <div class="extra content">
-            <div class="fit">
-
-            </div>
-            <div *ngIf="newComment.indexOf(memento._id) > -1" class="fit">
-                <form [formGroup]="commentForm">
-                    <textarea type="text" name="comment" formControlName="comment" placeholder="Add Comment..."></textarea>
-                    <div [ngClass]="{'has-success': !commentForm.controls.comment.errors && commentForm.controls.comment.dirty, 'has-error': commentForm.controls.comment.dirty && commentForm.controls.comment.errors}">
-                        <ul class="help-block">
-                            <li *ngIf="commentForm.controls.comment.errors?.required && commentForm.controls.comment.dirty">This field is required.</li>
-                            <li *ngIf="(commentForm.controls.comment.errors?.maxlength && commentForm.controls.comment.dirty) ||(commentForm.controls.comment.errors?.minlength && commentForm.controls.comment.dirty)">Comment must be at least 1 character but no more than 200.</li>
-                        </ul>
+                <div class="dropdown">
+                    <button [disabled]="memento?.likedBy.indexOf(username) > -1" class="ui icon mini button mem" type="button" name="button"
+                        *ngIf="username !== memento.createdBy" (click)="likeMemento(memento._id)"> {{memento?.likes}}
+                        <i class="thumbs up icon"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a [routerLink]="['/user/', liker]" *ngFor="let liker of memento.likedBy">{{ liker }}</a>
                     </div>
-                    <button [disabled]="!commentForm.valid || processing" type="submit" name="button" (click)="postComment(memento._id)" class="ui icon mini button new">Post
-                        <i class="send icon"></i>
+                </div>
+                <div class="dropdown">
+                    <button [disabled]="memento.dislikedBy.indexOf(username) > -1" class="ui icon mini button do" type="button" name="button"
+                        *ngIf="username !== memento.createdBy" (click)="dislikeMemento(memento._id)"> {{ memento?.dislikes }}
+                        <i class="thumbs down icon"></i>
                     </button>
-                    <button [disabled]="processing" type="button" name="button" class="ui icon mini button rel" (click)="cancelSubmission(memento._id)">Cancel
-                        <i class="cancel icon"></i>
-                    </button>
-                </form>
+                    <div class="dropdown-content">
+                        <a [routerLink]="['/user/', disliker]" *ngFor="let disliker of memento.dislikedBy">{{ disliker }}</a>
+                    </div>
+                </div>
             </div>
-            <div *ngIf="enabledComments.indexOf(memento._id) === -1 && memento.comments.length > 0" class="list-group-item">
-                <span (click)="expand(memento._id)">
-                    Show comments&nbsp;&nbsp;
-                    <div class="fa fa-comment"></div>
-                </span>
-            </div>
-            <div *ngIf="enabledComments.indexOf(memento._id) > -1" class="list-group-item">
-                <span (click)="collapse(memento._id)">
-                    Hide Comments&nbsp;&nbsp;
-                    <div class="fa fa-comment"></div>
-                </span>
-            </div>
-            <div *ngIf="enabledComments.indexOf(memento._id) > -1">
-                <div *ngFor="let comment of memento.comments" class="ui info tiny message item">
-                    <strong>{{ comment.commentator }}:</strong> {{ comment.comment }}
+            <div class="extra content">
+                <div *ngIf="newComment.indexOf(memento._id) > -1" class="fit">
+                    <form [formGroup]="commentForm">
+                        <textarea type="text" name="comment" formControlName="comment" placeholder="Add Comment..."></textarea>
+                        <div [ngClass]="{'has-success': !commentForm.controls.comment.errors && commentForm.controls.comment.dirty, 'has-error': commentForm.controls.comment.dirty && commentForm.controls.comment.errors}">
+                            <ul class="help-block">
+                                <li *ngIf="commentForm.controls.comment.errors?.required && commentForm.controls.comment.dirty">This field is required.</li>
+                                <li *ngIf="(commentForm.controls.comment.errors?.maxlength && commentForm.controls.comment.dirty) ||(commentForm.controls.comment.errors?.minlength && commentForm.controls.comment.dirty)">Comment must be at least 1 character but no more than 200.</li>
+                            </ul>
+                        </div>
+                        <button [disabled]="!commentForm.valid || processing" type="submit" name="button" (click)="postComment(memento._id)" class="ui icon mini button new">Post
+                            <i class="send icon"></i>
+                        </button>
+                        <button [disabled]="processing" type="button" name="button" class="ui icon mini button rel" (click)="cancelSubmission(memento._id)">Cancel
+                            <i class="cancel icon"></i>
+                        </button>
+                    </form>
+                </div>
+                <div *ngIf="enabledComments.indexOf(memento._id) === -1 && memento.comments.length > 0" class="list-group-item">
+                    <span (click)="expand(memento._id)">
+                        Show comments&nbsp;&nbsp;
+                        <div class="fa fa-comment-o"></div>
+                    </span>
+                </div>
+                <div *ngIf="enabledComments.indexOf(memento._id) > -1" class="list-group-item">
+                    <span (click)="collapse(memento._id)">
+                        Hide Comments&nbsp;&nbsp;
+                        <div class="fa fa-comment"></div>
+                    </span>
+                </div>
+                <div *ngIf="enabledComments.indexOf(memento._id) > -1">
+                    <div *ngFor="let comment of memento.comments" class="ui info tiny message item">
+                        <strong>{{ comment.commentator }}:</strong> {{ comment.comment }}
+                    </div>
                 </div>
             </div>
         </div>

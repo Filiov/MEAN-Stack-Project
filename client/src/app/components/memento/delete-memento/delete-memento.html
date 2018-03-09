@@ -1,49 +1,43 @@
 <h1 class="font">delete memento</h1>
 
 <div class="row show-hide-message" *ngIf="message">
-  <div [ngClass]="messageClass">
-    {{ message }}
-  </div>
+    <div [ngClass]="messageClass">
+        {{ message }}
+    </div>
 </div>
 
 <div class="col-md-6 center" *ngIf="foundMemento">
-  <div class="modal-content">
-    <div class="modal-header">
-      <button type="button" name="button" class="close" data-dismiss="modal">&times;</button>
-      <h4 class="modal-title">Confirm</h4>
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" name="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Confirm</h4>
+        </div>
+
+        <div class="modal-body">
+            <p>Are you sure you would like to delete this memento?</p>
+        </div>
+
+        <div class="modal-footer">
+            <button [disabled]="processing" type="button" name="button" class="btn btn-success" (click)="deleteMemento()">Yes</button>
+            <a routerLink="/memento">
+                <button [disabled]="processing" type="button" name="button" class="btn btn-danger">No</button>
+            </a>
+        </div>
     </div>
 
-    <div class="modal-body">
-      <p>Are you sure you would like to delete this memento?</p>
+    <br />
+
+    <div class="ui card">
+        <div class="content fit fon">
+            {{ memento?.title }}
+        </div>
+        <div class="image">
+            <img [src]="img" alt="image" class="fix">
+        </div>
+        <div class="content fi">
+            <i class="tag icon"></i>
+            {{ memento?.body }}
+        </div>
     </div>
-
-    <div class="modal-footer">
-      <button [disabled]="processing" type="button" name="button" class="btn btn-success" (click)="deleteMemento()">Yes</button>
-      <a routerLink="/memento"><button [disabled]="processing" type="button" name="button" class="btn btn-danger">No</button></a>
-    </div>
-  </div>
-
-  <br />
-
-  <div class="ui card">
-  <div class="content" [routerLink]="['/profile']">
-    <div class="right floated meta">{{ memento?.createdAt | date: 'MMM dd, yyyy' }}</div>
-    <img class="ui avatar image" src="https://www.w3schools.com/howto/img_avatar.png"> {{ memento?.createdBy }}
-</div>
-<div class="content fit">
-    {{ memento?.title }}
-</div>
-<div class="image">
-    <img [src]="memento?.img" alt="image" class="fix">
-</div>
-<div class="content">
-    <span class="right floated">
-        <i class="heart outline like icon"></i>
-        {{ memento?.likes }}
-    </span>
-    <i class="comment outline icon"></i>
-    {{ memento?.body }}
-</div>
-</div>
 
 </div>

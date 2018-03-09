@@ -19,6 +19,7 @@ import { MementoService } from './services/memento.service';
 import { Footer } from './components/footer/footer';
 import { EditMemento } from './components/memento/edit-memento/edit-memento';
 import { DeleteMemento } from './components/memento/delete-memento/delete-memento';
+import { PublicProfile } from './components/public-profile/public-profile';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { DeleteMemento } from './components/memento/delete-memento/delete-mement
         Footer,
         DeleteMemento,
         EditMemento,
+        PublicProfile
     ],
     imports: [
         BrowserModule,

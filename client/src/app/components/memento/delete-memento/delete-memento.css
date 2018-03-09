@@ -8,3 +8,26 @@
   .center {
     margin: auto;
   }
+
+  .ui.card {
+    margin-bottom: 2em;
+    margin-left: 2em;
+    width:300px;
+    background-color: #f0f0f0;
+    display: inline-block;
+}
+
+.content.fit.fon {
+    font-family: 'Galada';
+    color: #61bdc5;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    border-top: none;
+    text-align: center;
+  }
+
+  .content.fi {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-top: none;
+  }

@@ -4,6 +4,7 @@ import { Home } from './components/home/home';
 import { Register } from './components/register/register';
 import { Login } from './components/login/login';
 import { Profile } from './components/profile/profile';
+import { PublicProfile } from './components/public-profile/public-profile';
 import { AuthGuard } from './guards/auth.guard';
 import { NotAuthGuard } from './guards/notAuth.guard';
 import { Memento } from './components/memento/memento';
@@ -19,6 +20,7 @@ const appRoutes: Routes = [
     { path: 'memento', component: Memento, canActivate: [AuthGuard] },
     { path: 'edit-memento/:id', component: EditMemento, canActivate: [AuthGuard] },
     { path: 'delete-memento/:id', component: DeleteMemento, canActivate: [AuthGuard] },
+    { path: 'user/:username', component: PublicProfile, canActivate: [AuthGuard] },
     { path: '**', component: Home }
 ];
 

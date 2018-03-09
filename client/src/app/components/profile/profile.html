@@ -1,11 +1,12 @@
+
 <div class="ui card container">
         <div class="image">
-            <img [src]="profile?.avatar" alt="Image"/>
+            <img [src]="avatar" alt="Image" *ngIf="!img; else placeholder"/>
         </div>
         <div class="content">
-            <a class="header">{{username}}</a>
+            <a class="header">username: <span class="pur">{{username}}</span></a>
             <div class="meta">
-                <span class="email">{{email}}</span>
+                <span class="email">email: <span class="blu">{{email}}</span></span>
             </div>
             <div class="description">
                 

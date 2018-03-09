@@ -15,6 +15,7 @@ export class DeleteMemento implements OnInit {
   foundMemento = false;
   memento;
   currentUrl;
+  img;
 
 
   constructor(
@@ -36,7 +37,9 @@ export class DeleteMemento implements OnInit {
               createdBy: data.memento.createdBy,
               createdAt: data.memento.createdAt
           }
-          this.foundMemento = true; 
+          this.foundMemento = true;
+          this.img = data.memento.img;
+           
         }
       });
   }
