@@ -1,4 +1,4 @@
-<h1 class="page-header content">edit memento</h1>
+<h1 class="page-header content"><img src="assets/reg.png" class="edit">&nbsp;&nbsp;edit memento</h1>
 
 <div class="row show-hide-message" *ngIf="message">
     <div [ngClass]="messageClass">
@@ -23,10 +23,10 @@
             </div>
 
             <a [routerLink]="['/delete-memento/', memento._id]">
-                <button [disabled]="processing" type="button" name="button" class="btn btn-danger">Delete</button>
+                <button [disabled]="processing" type="button" name="button" class="btn btn-danger"><i class="trash icon"></i>&nbsp;&nbsp;Delete</button>
             </a>
-            <button [disabled]="processing" type="button" name="button" class="btn new" (click)="goBack()">Go Back</button>
-            <button [disabled]="processing" type="submit" name="save" class="btn rel">Save Changes</button>
+            <button [disabled]="processing" type="button" name="button" class="btn new" (click)="goBack()"><i class="undo icon"></i>&nbsp;&nbsp;Go Back</button>
+            <button [disabled]="processing" type="submit" name="save" class="btn rel"><i class="save icon"></i>&nbsp;&nbsp;Save Changes</button>
         </form>
     </div>
 </div>

@@ -21,33 +21,28 @@
 }
 
 .mem {
-    background-color:rgb(97, 189, 197);
+    background-color:#61bdc5;
 }
 
 .text-center {
     margin-top: 20px;
-    margin-bottom: 80px;
-}
-
-.background {
-    background-color: #75bbc2;
+    margin-bottom: 40px;
 }
 
 .font-2 {
     font-family: 'Galada';
     font-size: 25px;
-    color: #ffffff;
+    color: #61bdc5;
 }
 
 .font-3 {
     font-family: 'Galada';
     font-size: 35px;
-    color: #ffffff;
+    color: #61bdc5;
 }
 
 .mb {
     margin-bottom: 30px;
-    margin-left: 40px;
 }
 
 .cent {
@@ -55,4 +50,8 @@
     margin-left: auto;
     margin-right: auto;
     height: 500px;
+}
+
+.cam {
+    width: 90px;
 }

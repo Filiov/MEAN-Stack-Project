@@ -1,6 +1,6 @@
 .font {
     font-family: 'Galada';
-    font-size: 40px;
+    font-size: 36px;
     color: #61bdc5;
     text-align: center;
   }
@@ -31,3 +31,8 @@
     padding-bottom: 8px;
     border-top: none;
   }
+
+  .trash {
+      width: 80px;
+  }
+

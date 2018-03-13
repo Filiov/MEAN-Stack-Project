@@ -1,4 +1,4 @@
-<h1 class="font">delete memento</h1>
+<h2 class="font"><img src="assets/trash1.png" class="trash">&nbsp;&nbsp;delete memento</h2>
 
 <div class="row show-hide-message" *ngIf="message">
     <div [ngClass]="messageClass">
@@ -9,8 +9,7 @@
 <div class="col-md-6 center" *ngIf="foundMemento">
     <div class="modal-content">
         <div class="modal-header">
-            <button type="button" name="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Confirm</h4>
+            <h4 class="modal-title"><i class="trash icon"></i>Confirm</h4>
         </div>
 
         <div class="modal-body">
@@ -18,9 +17,9 @@
         </div>
 
         <div class="modal-footer">
-            <button [disabled]="processing" type="button" name="button" class="btn btn-success" (click)="deleteMemento()">Yes</button>
+            <button [disabled]="processing" type="button" name="button" class="btn btn-success" (click)="deleteMemento()"><i class="check icon"></i>&nbsp;&nbsp;Yes</button>
             <a routerLink="/memento">
-                <button [disabled]="processing" type="button" name="button" class="btn btn-danger">No</button>
+                <button [disabled]="processing" type="button" name="button" class="btn btn-danger"><i class="times icon"></i>&nbsp;&nbsp;No</button>
             </a>
         </div>
     </div>

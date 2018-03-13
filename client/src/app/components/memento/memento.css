@@ -89,6 +89,7 @@
 
   .column1 {
     max-width: 450px;
+    text-align: center;
   }
 
   .color1 {
@@ -104,10 +105,14 @@
       padding-right: 10px;
   }
 
+  .ui.form .field > label {
+      text-align: left;
+  }
+
   .content1 {
     font-family: 'Galada';
     font-size: 36px;
-    color: #61bdc5;
+    color: rgb(97, 189, 197);
   }
 
   .font1 {
@@ -118,6 +123,10 @@
 
   .fix {
       height: 210px !important;
+  }
+
+  .feed {
+      width: 73px;
   }
 
   li {
@@ -206,4 +215,5 @@ textarea {
     padding-top: 5px;
     padding-bottom: 5px;
   }
+
   

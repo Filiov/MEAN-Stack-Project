@@ -17,11 +17,11 @@
     margin-top: -100px;
   }
   .column {
-    max-width: 500px;
+    max-width: 585px;
   }
 
   .color {
-      background-color: #61bdc5;
+      background-color: rgb(97, 189, 197);
       color: white;
   }
 
@@ -31,7 +31,7 @@
 
   .content {
     font-family: 'Galada';
-    font-size: 40px;
+    font-size: 36px;
     color: #61bdc5;
     text-align: center;
   }
@@ -39,5 +39,13 @@
   .alert {
     padding: 0rem 0rem;
   }
+
+  .edit {
+      width: 80px;
+  }
+
+
+
+  
 
 
