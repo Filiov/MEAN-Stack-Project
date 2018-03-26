@@ -37,7 +37,8 @@
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f0f0f0;
+    background-color: #ddd;
+    border-radius: 7%;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
@@ -50,10 +51,14 @@
     display: block;
 }
 
-.dropdown-content a:hover {background-color: #ddd}
+.dropdown-content a:hover {
+    background: linear-gradient(to right,rgba(140, 107, 167, 0.925) , rgba(64, 136, 177, 0.925));
+    border-radius: 7%;
+}
 
 .dropdown:hover .dropdown-content {
     display: block;
+    border-radius: 7%;
 }
 
 .fa-send {
@@ -181,7 +186,7 @@ textarea {
 
 .content.fit.fon {
     font-family: 'Galada';
-    color: #61bdc5;
+    color: #0e0e0e;
     padding-top: 0px;
     padding-bottom: 0px;
     border-top: none;
@@ -214,6 +219,10 @@ textarea {
   .list-group-item:first-child {
     padding-top: 5px;
     padding-bottom: 5px;
+  }
+
+  .point {
+      cursor: pointer;
   }
 
   

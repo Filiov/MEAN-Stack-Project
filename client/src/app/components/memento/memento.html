@@ -67,7 +67,7 @@
     <div class="ui card" *ngFor="let memento of mementoPosts">
         <div class="content fi">
             <div class="right floated meta">{{ memento?.createdAt | date: 'MMM dd, yyyy' }}</div>
-            <img class="ui avatar image" [src]="avatar"> {{ memento?.createdBy }}
+            <img class="ui avatar image" src="../../../assets/avatar.png"> {{ memento?.createdBy }}
         </div>
         <div class="content fit fon">
             {{ memento?.title }}
@@ -138,13 +138,13 @@
                 </form>
             </div>
             <div *ngIf="enabledComments.indexOf(memento._id) === -1 && memento.comments.length > 0" class="list-group-item">
-                <span (click)="expand(memento._id)">
+                <span class="point" (click)="expand(memento._id)">
                     Show comments&nbsp;&nbsp;
                     <div class="fa fa-comment-o"></div>
                 </span>
             </div>
             <div *ngIf="enabledComments.indexOf(memento._id) > -1" class="list-group-item">
-                <span (click)="collapse(memento._id)">
+                <span class="point" (click)="collapse(memento._id)">
                     Hide Comments&nbsp;&nbsp;
                     <div class="fa fa-comment"></div>
                 </span>

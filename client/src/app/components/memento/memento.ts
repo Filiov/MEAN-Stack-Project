@@ -57,7 +57,7 @@ export class Memento {
     }
 
     enableCommentForm() {
-        this.commentForm.get('comment').enable(); 
+        this.commentForm.get('comment').enable();
     }
 
     disableCommentForm() {
