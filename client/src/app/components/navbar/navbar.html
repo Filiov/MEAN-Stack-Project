@@ -26,13 +26,16 @@
                     <i class="fa fa-lock"></i> Log In </a>
             </li>
             <li class="nav-item" *ngIf="authService.loggedIn()">
-                <a class="nav-link" routerLink="/profile">
-                    <i class="fa fa-user"></i> Profile </a>
+                <a class="nav-link" (click)="onLogoutClick()">
+                    <i class="fa fa-sign-out"></i> Log Out </a>
             </li>
-            <li class="nav-item" *ngIf="authService.loggedIn()">
-                    <a class="nav-link" (click)="onLogoutClick()">
-                        <i class="fa fa-sign-out"></i> Log Out </a>
-                </li>
+            <li *ngIf="authService.loggedIn()">
+                <a class="nav-link" routerLink="/profile">
+                    <div class="content profile">
+                        <img class="ui avatar image tiny" [src]="avatar"> {{email}}
+                    </div>
+                </a>
+            </li>
         </ul>
     </div>
 </nav>

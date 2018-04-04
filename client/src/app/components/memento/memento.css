@@ -52,7 +52,7 @@
 }
 
 .dropdown-content a:hover {
-    background: linear-gradient(to right,rgba(140, 107, 167, 0.925) , rgba(64, 136, 177, 0.925));
+    background:#87a7b8;
     border-radius: 7%;
 }
 
