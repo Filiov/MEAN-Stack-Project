@@ -46,19 +46,58 @@ module.exports = (router) => {
         }
     });
 
+    function escapeRegex(text) {
+        return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+    };
+
     router.get('/allMementos', (req, res) => {
-        Memento.find({}, (err, mementos) => {
-            if (err) {
-                res.json({ success: false, message: err });
-            } else {
-                if (!mementos) {
-                    res.json({ success: false, message: 'No mementos found.' });
+        if (req.query.search) {
+            const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+            Memento.find({ "title": regex }, (err, mementos) => {
+                if (err) {
+                    res.json({ success: false, message: err });
+                } else { 
+                        res.json({ success: true, mementos: mementos });
+                    }
+            })
+        } else {
+            Memento.find({}, (err, mementos) => {
+                if (err) {
+                    res.json({ success: false, message: err });
                 } else {
-                    res.json({ success: true, mementos: mementos });
+                    if (!mementos) {
+                        res.json({ success: false, message: 'No mementos found.' });
+                    } else {
+                        res.json({ success: true, mementos: mementos });
+                    }
                 }
-            }
-        }).sort({ '_id': -1 });
+            }).sort({ '_id': -1 });
+        }
     });
+
+    // router.get('/allMementos', (req, res) => {
+    //     if (req.query.search) {
+    //         Memento.find({ $text: { $search: req.query.search } }, (err, mementos) => {
+    //             if (err) {
+    //                 res.json({ success: false, message: err });
+    //             } else {
+    //                 res.json({ success: true, mementos: mementos });
+    //             }
+    //         })
+    //     } else {
+    //         Memento.find({}, (err, mementos) => {
+    //             if (err) {
+    //                 res.json({ success: false, message: err });
+    //             } else {
+    //                 if (!mementos) {
+    //                     res.json({ success: false, message: 'No mementos found.' });
+    //                 } else {
+    //                     res.json({ success: true, mementos: mementos });
+    //                 }
+    //             }
+    //         }).sort({ '_id': -1 });
+    //     }
+    // });
 
     router.get('/singleMemento/:id', (req, res) => {
         if (!req.params.id) {

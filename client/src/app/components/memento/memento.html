@@ -1,6 +1,7 @@
 <div class="text-center">
     <h1 *ngIf="!newPost" class="page-header content1">
         <img src="assets/rss.png" class="feed">&nbsp;&nbsp;memento feed</h1>
+    <br />
 
     <div class="row show-hide-message" *ngIf="message && newPost">
         <div [ngClass]="messageClass">
@@ -14,6 +15,7 @@
         <i class="redo alternate icon"></i>&nbsp;&nbsp;Reload</button>
 </div>
 <br />
+<search></search>
 <br />
 
 <div class="ui top aligned center aligned grid" *ngIf="newPost">
@@ -106,7 +108,8 @@
                     <i class="thumbs up icon"></i>
                 </button>
                 <div class="dropdown-content">
-                    <a [routerLink]="['/user/', liker]" *ngFor="let liker of memento.likedBy"><i class="user icon"></i>{{ liker }}</a>
+                    <a [routerLink]="['/user/', liker]" *ngFor="let liker of memento.likedBy">
+                        <i class="user icon"></i>{{ liker }}</a>
                 </div>
             </div>
             <div class="dropdown">
@@ -115,7 +118,8 @@
                     <i class="thumbs down icon"></i>
                 </button>
                 <div class="dropdown-content">
-                    <a [routerLink]="['/user/', disliker]" *ngFor="let disliker of memento.dislikedBy"><i class="user icon"></i>{{ disliker }}</a>
+                    <a [routerLink]="['/user/', disliker]" *ngFor="let disliker of memento.dislikedBy">
+                        <i class="user icon"></i>{{ disliker }}</a>
                 </div>
             </div>
         </div>

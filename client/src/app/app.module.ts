@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { RoutingModule } from './routing.module';
@@ -20,6 +21,7 @@ import { Footer } from './components/footer/footer';
 import { EditMemento } from './components/memento/edit-memento/edit-memento';
 import { DeleteMemento } from './components/memento/delete-memento/delete-memento';
 import { PublicProfile } from './components/public-profile/public-profile';
+import { Search } from './components/search/search';
 
 
 @NgModule({
@@ -34,13 +36,15 @@ import { PublicProfile } from './components/public-profile/public-profile';
         Footer,
         DeleteMemento,
         EditMemento,
-        PublicProfile
+        PublicProfile,
+        Search
     ],
     imports: [
         BrowserModule,
         ReactiveFormsModule,
         FormsModule,
         HttpModule,
+        HttpClientModule,
         RoutingModule
     ],
     providers: [
