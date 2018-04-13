@@ -56,12 +56,25 @@ module.exports = (router) => {
             Memento.find({ "title": regex }, (err, mementos) => {
                 if (err) {
                     res.json({ success: false, message: err });
-                } else { 
-                        res.json({ success: true, mementos: mementos });
-                    }
+                } else {
+                    res.json({ success: true, mementos: mementos });
+                }
             })
         } else {
-            Memento.find({}, (err, mementos) => {
+            Memento.aggregate([
+                {
+                    $lookup: {
+                        from: "users",
+                        localField: "createdBy",
+                        foreignField: "username",
+                        as: "user"
+                    }
+                },
+                {
+                    $replaceRoot: { newRoot: { $mergeObjects: [{ $arrayElemAt: ["$user", 0] }, "$$ROOT"] } }
+                },
+                // { $project: { fromItems: 0 } }
+            ], (err, mementos) => {
                 if (err) {
                     res.json({ success: false, message: err });
                 } else {

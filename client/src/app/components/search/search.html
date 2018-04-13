@@ -12,7 +12,7 @@
     <div class="ui card" *ngFor="let result of results">
         <div class="content fi">
             <div class="right floated meta">{{ result?.createdAt | date: 'MMM dd, yyyy' }}</div>
-            <img class="ui avatar image" src="../../../assets/avatar.png"> {{ result?.createdBy }}
+            <img class="ui avatar image" [src]="result.avatar"> {{ result?.createdBy }}
         </div>
         <div class="content fit fon">
             {{ result?.title }}

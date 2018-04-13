@@ -67,9 +67,9 @@
 
 <div *ngIf="!newPost">
     <div class="ui card" *ngFor="let memento of mementoPosts">
-        <div class="content fi">
+        <div class="content fi" [routerLink]="['/user/', memento.createdBy]">
             <div class="right floated meta">{{ memento?.createdAt | date: 'MMM dd, yyyy' }}</div>
-            <img class="ui avatar image" src="../../../assets/avatar.png"> {{ memento?.createdBy }}
+            <img class="ui avatar image" [src]="memento?.avatar"/> {{ memento?.createdBy }}
         </div>
         <div class="content fit fon">
             {{ memento?.title }}

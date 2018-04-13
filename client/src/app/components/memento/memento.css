@@ -196,6 +196,7 @@ textarea {
     padding-bottom: 0px;
     padding-top: 15px;
     border-top: none;
+    cursor: pointer;
   }
 
   .content.fii {

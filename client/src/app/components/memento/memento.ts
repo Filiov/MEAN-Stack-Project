@@ -174,7 +174,7 @@ export class Memento {
             this.mementoPosts = data.mementos;
         });
     }
-
+                                                                                                                                                                                                                                                                    
     likeMemento(id) {
         this.mementoService.likeMemento(id).subscribe(data => {
             this.getAllMementos();
