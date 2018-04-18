@@ -226,4 +226,18 @@ textarea {
       cursor: pointer;
   }
 
-  
+  .prompt {
+      height: 20px;
+      width: auto;   
+      
+  }
+
+  .ui.search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ui.icon.input > input {
+     background-color: #f0f0f0;
+  }

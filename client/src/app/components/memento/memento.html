@@ -14,8 +14,7 @@
     <button [disabled]="loadingPosts" type="button" name="button" class="btn rel" *ngIf="!newPost" (click)="reloadPosts()">
         <i class="redo alternate icon"></i>&nbsp;&nbsp;Reload</button>
 </div>
-<br />
-<search></search>
+
 <br />
 
 <div class="ui top aligned center aligned grid" *ngIf="newPost">
@@ -66,10 +65,17 @@
 </div>
 
 <div *ngIf="!newPost">
-    <div class="ui card" *ngFor="let memento of mementoPosts">
+    <div class="ui search">
+        <div class="ui icon input">
+            <input class="prompt" type="text" [(ngModel)]="term" placeholder="Search...">
+            <i class="search icon"></i>
+        </div>
+    </div>
+    <br/>
+    <div class="ui card" *ngFor="let memento of mementoPosts |filter:term">
         <div class="content fi" [routerLink]="['/user/', memento.createdBy]">
             <div class="right floated meta">{{ memento?.createdAt | date: 'MMM dd, yyyy' }}</div>
-            <img class="ui avatar image" [src]="memento?.avatar"/> {{ memento?.createdBy }}
+            <img class="ui avatar image" [src]="memento?.avatar" /> {{ memento?.createdBy }}
         </div>
         <div class="content fit fon">
             {{ memento?.title }}

@@ -2,7 +2,6 @@ import { Component, Input, } from "@angular/core";
 import { FormControl, FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { AuthService } from '../../services/auth.service';
 import { MementoService } from '../../services/memento.service';
-import { Search } from "../search/search";
 
 @Component({
     selector: "memento",

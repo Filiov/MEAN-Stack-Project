@@ -21,7 +21,7 @@ import { Footer } from './components/footer/footer';
 import { EditMemento } from './components/memento/edit-memento/edit-memento';
 import { DeleteMemento } from './components/memento/delete-memento/delete-memento';
 import { PublicProfile } from './components/public-profile/public-profile';
-import { Search } from './components/search/search';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 @NgModule({
@@ -36,8 +36,7 @@ import { Search } from './components/search/search';
         Footer,
         DeleteMemento,
         EditMemento,
-        PublicProfile,
-        Search
+        PublicProfile
     ],
     imports: [
         BrowserModule,
@@ -45,7 +44,8 @@ import { Search } from './components/search/search';
         FormsModule,
         HttpModule,
         HttpClientModule,
-        RoutingModule
+        RoutingModule,
+        Ng2SearchPipeModule
     ],
     providers: [
         AuthService,
