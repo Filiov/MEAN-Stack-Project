@@ -10,11 +10,11 @@ import { Router } from '@angular/router';
 })
 export class Register implements OnInit {
 
-    form: FormGroup;
+    form;
     message;
     messageClass;
     emailValid;
-    emailMeassage;
+    emailMessage;
     usernameValid;
     usernameMessage;
     processing = false;
@@ -136,10 +136,10 @@ export class Register implements OnInit {
         this.authService.checkEmail(this.form.get('email').value).subscribe(data => {
             if (!data.success) {
                 this.emailValid = false;
-                this.emailMeassage = data.message;
+                this.emailMessage = data.message;
             } else {
                 this.emailValid = true;
-                this.emailMeassage = data.message;
+                this.emailMessage = data.message;
             }
         });
     }

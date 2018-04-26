@@ -8,6 +8,6 @@ import { AuthService } from '../../services/auth.service';
 })
 export class Home {
 
-    constructor(private authService: AuthService) { }
+    constructor(public authService: AuthService) { }
                     
 }

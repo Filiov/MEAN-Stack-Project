@@ -22,13 +22,13 @@
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
     "angular2-jwt": "^0.2.3",
-    "bootstrap": "^4.0.0",
+    "bootstrap": "4.0.0",
     "core-js": "^2.4.1",
     "jquery": "^3.3.1",
     "jwt-decode": "^2.2.0",
     "ng2-search-filter": "^0.4.7",
     "rxjs": "^5.5.6",
-    "semantic-ui-css": "^2.2.14",
+    "semantic-ui-css": "2.2.14",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {

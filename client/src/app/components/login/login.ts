@@ -11,7 +11,7 @@ import { AuthGuard } from '../../guards/auth.guard';
 })
 export class Login implements OnInit {
 
-    form: FormGroup;
+    form;
     message;
     messageClass;
     previousUrl;
