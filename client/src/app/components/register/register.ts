@@ -21,7 +21,7 @@ export class Register implements OnInit {
     private base64textString: String = '';
     avatar;
 
-    constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
+    constructor(private formBuilder: FormBuilder, public authService: AuthService, private router: Router) {
         this.createForm()
     }
 
