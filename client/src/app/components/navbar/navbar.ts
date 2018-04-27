@@ -12,7 +12,7 @@ export class Navbar implements OnInit {
     email;
     avatar;
 
-    constructor(public authService: AuthService, private router: Router) { }
+    constructor(private authService: AuthService, private router: Router) { }
 
     ngOnInit() {
         this.authService.getProfile().subscribe(profile => {

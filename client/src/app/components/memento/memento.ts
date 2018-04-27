@@ -24,7 +24,7 @@ export class Memento {
     newComment = [];
     enabledComments = [];
 
-    constructor(private formBuilder: FormBuilder, public authService: AuthService, private mementoService: MementoService) {
+    constructor(private formBuilder: FormBuilder, private authService: AuthService, private mementoService: MementoService) {
         this.createNewMementoForm();
         this.createCommentForm();
     }
