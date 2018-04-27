@@ -12,7 +12,7 @@
     <button type="button" name="button" class="btn new" *ngIf="!newPost" (click)="newMementoForm()">
         <i class="camera retro icon"></i>&nbsp;&nbsp;New Post</button>
     <button [disabled]="loadingPosts" type="button" name="button" class="btn rel" *ngIf="!newPost" (click)="reloadPosts()">
-        <i class="redo alternate icon"></i>&nbsp;&nbsp;Reload</button>
+        <i class="undo icon"></i>&nbsp;&nbsp;Reload</button>
 </div>
 
 <br />
@@ -40,7 +40,7 @@
                 </ul>
                 <div class="field">
                     <div [ngClass]="{'has-success': form.controls.body.valid, 'has-error': form.controls.body.dirty && form.controls.body.errors}">
-                        <textarea name="body" rows="8" cols="80" placeholder="Description" class="form-control" formControlName="body"></textarea>
+                        <textarea name="body" placeholder="Description" class="form-control" formControlName="body"></textarea>
                     </div>
                 </div>
                 <ul class="help-block">
@@ -58,7 +58,7 @@
             <button [disabled]="processing" type="button" name="button" (click)="goBack()" class="btn rel">
                 <i class="undo icon"></i>&nbsp;&nbsp;Go Back</button>
             <button [disabled]="processing || !form.valid" type="submit" name="button" class="btn new">
-                <i class="paper plane icon"></i>&nbsp;&nbsp;Submit</button>
+                <i class="send icon"></i>&nbsp;&nbsp;Submit</button>
             <div class="ui error message"></div>
         </form>
     </div>
