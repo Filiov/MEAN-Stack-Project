@@ -8,7 +8,6 @@ const authentication = require('./routes/authentication')(router);
 const mementos = require('./routes/mementos')(router);
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const port = process.env.PORT || 8080;
 
 mongoose.Promise = global.Promise;
 mongoose.connect(config.uri, (err) => {
@@ -24,14 +23,14 @@ app.use(cors({
 }));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(bodyParser.json({limit: '50mb'}));
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/client/dist/'));
 app.use('/authentication', authentication);
 app.use('/mementos', mementos);
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname + '/public/index.html'));
+  res.sendFile(path.join(__dirname + '/client/dist/index.html'));
 });
 
-app.listen(port, () => {
-    console.log('Listening on port ' + port);
+app.listen(8080, () => {
+    console.log('Listening on port 8080');
 });
