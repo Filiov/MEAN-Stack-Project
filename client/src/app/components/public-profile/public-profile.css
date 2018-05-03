@@ -5,3 +5,8 @@
 .blu {
     color: #4088b1;
 }
+
+.ui.card.container {
+  margin-bottom: 220px;
+  background-color: #f0f0f0;
+}
